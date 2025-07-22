@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Jharkhand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+      .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+      .text-accent-saffron { color: #FF9933; }
+      .text-accent-green { color: #138808; }
+      .border-accent-saffron { border-color: #FF9933; }
+      .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Jharkhand</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Forests & Fortresses</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a rich heritage of formidable forts, unique terracotta temples, and the grand palaces of the Chero and Nagvanshi kings.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Jharkhand</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Jharkhand are powerful symbols of the region's martial history, built by dynasties like the Cheros and Nagvanshis to defend their kingdoms and control the forested heartland of the Chota Nagpur Plateau.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Palamu Forts</h3>
+                    <p>Located near Betla National Park, these twin forts (Old and New) were the seat of the Chero dynasty. The Old Fort was built by Raja Pratap Rai, while the New Fort was constructed by the powerful Raja Medini Rai. The imposing Nagpuri Gate of the new fort showcases exquisite Mughal-era architectural influence. [8, 9, 10, 11, 12, 13, 14, 15, 16]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Navratangarh (Doisagarh)</h3>
+                    <p>The capital of the Nagvanshi dynasty, this fortified palace was built by King Durjan Shah in the 17th century. Originally a five-storied structure with a moat, it includes a court, treasury, and prison. Its architecture shows a blend of local styles with Mughal influences, a result of the king's time in their court. [8, 17, 18, 19, 20, 21, 22]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Shahpur Chandani</h3>
+                    <p>Situated on the banks of the Koel River in Palamu, this fort was built by the Chero ruler Gopal Rai in 1772. Its location and structure reflect the later period of Chero rule, serving as a key defensive and administrative center for the kingdom. [8]</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Temples & Monuments</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Jharkhand is home to unique temple clusters and ancient religious sites that showcase a rich history of faith and artistry, from intricate terracotta work to grand stone edifices.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Maluti Temples, Dumka</h3>
+                    <p>This remarkable village is home to a cluster of 72 surviving terracotta temples (out of an original 108). Built between the 17th and 19th centuries by the Baj Basanta dynasty, these temples feature the Bengali *char-chala* style and are adorned with intricate terracotta panels depicting scenes from the Ramayana and Mahabharata. [23, 24, 25, 26, 27, 28]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jagannath Temple, Ranchi</h3>
+                    <p>Built in 1691 by King Aninath Shahdeo, this temple is a smaller replica of the famous Jagannath Temple in Puri, Odisha. Perched on a small hillock, it is a fine example of Kalinga-style architecture and is a major pilgrimage center, especially during the annual Rath Yatra festival. [29, 30, 31]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palaces of the Regional Kings</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The palaces of Jharkhand reflect the power and lifestyle of its local rulers, serving as both fortified residences and administrative centers.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Ranka Garh (Raj Mahal)</h3>
+                    <p>Located in the Garhwa district, this fort-palace was the residence of the kings of Ranka. The Raj Mahal within the fort is the main highlight, showcasing an opulent lifestyle with its beautiful arches, ornate pillars, and intricately designed interiors, blending defensive and residential architecture. [32]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chainpur Palace</h3>
+                    <p>Situated on the banks of the Koel River in Palamu, this palace was built by the descendants of a Rajput Diwan who served the Chero kings. Its architecture reflects the fusion of Rajput and local styles, standing as a testament to the influential families of the region. [8]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Jharkhand is a story of powerful local dynasties and their deep-rooted faith. The charts below analyze the functional purpose of its major monuments and the primary materials used in their construction.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Jharkhand has a tropical climate with hot summers and a pleasant winter. The best time to explore its historical sites is during the cooler, drier months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer the most pleasant weather, with mild temperatures and clear skies, making it perfect for visiting forts, temples, and the state's national parks.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings lush greenery to the landscape and makes the waterfalls spectacular, but heavy rainfall can make travel to remote archaeological sites difficult.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot and humid. This period is generally challenging for tourism and extensive outdoor sightseeing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets:, backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Religious (Temples)', data: [2], backgroundColor: '#138808' },   // Green
+                    { label: 'Royal / Civic', data: [3], backgroundColor: '#FF9933' } // Saffron
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [4, 5, 6, 7],
+                    backgroundColor: ['#FF9933', '#808080', '#A7C7E7', '#138808'], // Saffron, Gray, Light Blue, Green
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

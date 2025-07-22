@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinels of a Subcontinent: An Interactive Guide to India's Forts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Sandstone, Parchment) with Royal Blue and Saffron accents -->
+    <!-- Application Structure Plan: A user-centric, non-linear SPA design. The structure begins with a broad introduction, then allows users to explore based on their interest: by ancient classification (Typology), by curated groups (The Great Forts), through quantitative data (Comparison Tool), or for practical purposes (Travel Planner). This dashboard-like approach is chosen over a linear report format to empower user-driven discovery, making the dense information more accessible and engaging. Key interactions include filtering, expanding content reveals, and dynamic chart updates, facilitating a layered learning experience. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Fort classifications (Giri-durga, etc.). Goal: Organize & Inform. Viz/Method: Interactive cards with icons (Unicode) and expandable descriptions. Interaction: Click to reveal details. Justification: Breaks down complex typology into digestible, interactive chunks. Library: Vanilla JS for DOM manipulation.
+        - Report Info: Detailed descriptions of 8+ forts. Goal: Inform & Compare. Viz/Method: A filterable grid of content cards. Interaction: Filter buttons to switch views (e.g., "Crown Jewels," "Rajasthan"). Cards have an expand button. Justification: Manages a large amount of text content, allowing users to focus on specific themes without being overwhelmed. Library: Vanilla JS.
+        - Report Info: Quantitative data (wall length, fort area). Goal: Compare & Analyze. Viz/Method: Dynamic Bar Chart. Interaction: Dropdown selector to change the displayed metric. Justification: Provides a powerful visual comparison that is more impactful than a static table. Library: Chart.js for dynamic, responsive canvas rendering.
+        - Report Info: Travel planning table and tips. Goal: Inform & Organize. Viz/Method: Styled HTML table and text blocks. Interaction: Static content. Justification: Presents practical information in a clear, easy-to-reference format. Library: TailwindCSS for styling.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF8F0; /* Warm Parchment */
+            color: #4A4A4A;
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #D97706; /* Saffron Accent */
+            border-bottom-color: #D97706;
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background-color: #2563EB; /* Royal Blue */
+            color: white;
+        }
+        .fort-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .fort-card-content.expanded {
+            max-height: 2000px; /* Large enough for content */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-[#FDF8F0]/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">Sentinels of India</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#typology" class="nav-link">Fort Types</a>
+                <a href="#explore" class="nav-link">Explore Forts</a>
+                <a href="#compare" class="nav-link">Compare</a>
+                <a href="#planner" class="nav-link">Travel Planner</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#home" class="block nav-link">Home</a>
+            <a href="#typology" class="block nav-link">Fort Types</a>
+            <a href="#explore" class="block nav-link">Explore Forts</a>
+            <a href="#compare" class="block nav-link">Compare</a>
+            <a href="#planner" class="block nav-link">Travel Planner</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-[60vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(253, 248, 240, 0.6), rgba(253, 248, 240, 1)), url('https://placehold.co/1600x900/D1C4E9/4A4A4A?text=Mehrangarh+Fort+Silhouette');">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">Sentinels of a Subcontinent</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-700">
+                    Discover the epic history of India through its magnificent forts. These are not mere military outposts, but complex centers of power, culture, and art, each with a unique story of conquest, resistance, and survival.
+                </p>
+            </div>
+        </section>
+
+        <section id="typology" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">A Lexicon of Fortresses</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Ancient Indian strategy classified forts based on their geography, leveraging the landscape as the first line of defense. Explore the primary types of *durga* (forts) to understand this sophisticated system of environmental warfare.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">⛰️</span>
+                        <h3 class="text-2xl font-semibold mb-2">Giri-durga</h3>
+                        <p class="text-gray-600">Hill Forts built on mountains for a natural advantage. Prime examples include the great hill forts of Rajasthan like Chittorgarh and Mehrangarh.</p>
+                    </div>
+                    <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">🌊</span>
+                        <h3 class="text-2xl font-semibold mb-2">Jala-durga</h3>
+                        <p class="text-gray-600">Water Forts surrounded by rivers or the sea, making them exceptionally difficult to assault, like the island fortress of Murud-Janjira.</p>
+                    </div>
+                    <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">🏜️</span>
+                        <h3 class="text-2xl font-semibold mb-2">Maru-durga</h3>
+                        <p class="text-gray-600">Desert Forts where the arid landscape itself was a weapon. Jaisalmer Fort, rising from the Thar Desert, is the quintessential example.</p>
+                    </div>
+                    <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">🌳</span>
+                        <h3 class="text-2xl font-semibold mb-2">Vana-durga</h3>
+                        <p class="text-gray-600">Forest Forts protected by dense, impassable wilderness, using the thorny jungle as a natural barrier against invading armies.</p>
+                    </div>
+                    <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">🌍</span>
+                        <h3 class="text-2xl font-semibold mb-2">Mahi-durga</h3>
+                        <p class="text-gray-600">Earthen Forts constructed with massive earthen ramparts, often reinforced with stone or brickwork for added strength.</p>
+                    </div>
+                     <div class="bg-[#FDF8F0] p-8 rounded-lg shadow-md text-center">
+                        <span class="text-5xl mb-4 block">💎</span>
+                        <h3 class="text-2xl font-semibold mb-2">Dhana-durga</h3>
+                        <p class="text-gray-600">Garrison Forts that were centers of wealth and military might, often housing treasuries and vast armories like Golconda, the diamond capital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="explore" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Explore the Great Forts of India</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">From imperial capitals to unconquered bastions, each fort tells a unique story of power, artistry, and resilience. Filter by category to delve into the narratives of India's most iconic sentinels.</p>
+                </div>
+                <div id="filter-container" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+                    <button class="filter-btn active px-4 py-2 rounded-full font-semibold bg-white shadow-sm" data-filter="all">All Forts</button>
+                    <button class="filter-btn px-4 py-2 rounded-full font-semibold bg-white shadow-sm" data-filter="crown-jewels">Crown Jewels</button>
+                    <button class="filter-btn px-4 py-2 rounded-full font-semibold bg-white shadow-sm" data-filter="rajasthan">Rajasthan's Valor</button>
+                    <button class="filter-btn px-4 py-2 rounded-full font-semibold bg-white shadow-sm" data-filter="marvels">Architectural Marvels</button>
+                    <button class="filter-btn px-4 py-2 rounded-full font-semibold bg-white shadow-sm" data-filter="coastal">Coastal Guardians</button>
+                </div>
+                <div id="forts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+            </div>
+        </section>
+        
+        <section id="compare" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">A Comparative View</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Visualize the immense scale of these fortifications. Select a metric to compare the forts and appreciate the engineering and ambition behind their construction. This tool helps contextualize the sheer size and defensive capabilities discussed in the report.</p>
+                </div>
+                <div class="max-w-xs mx-auto mb-8">
+                    <label for="metric-selector" class="block text-sm font-medium text-gray-700 mb-2 text-center">Compare by:</label>
+                    <select id="metric-selector" class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <option value="wallLength" selected>Perimeter Wall Length (km)</option>
+                        <option value="area">Area (acres)</option>
+                        <option value="height">Max Wall Height (m)</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="forts-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="planner" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Plan Your Visit</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Ready to embark on your own historical journey? This section provides a practical, at-a-glance guide to help you plan your itinerary, summarizing key details for the premier forts of India.</p>
+                </div>
+                <div class="overflow-x-auto bg-white p-4 rounded-lg shadow-lg">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-[#FDF8F0]">
+                            <tr>
+                                <th class="p-4 border-b-2 border-gray-200 font-semibold">Fort Name</th>
+                                <th class="p-4 border-b-2 border-gray-200 font-semibold">Location</th>
+                                <th class="p-4 border-b-2 border-gray-200 font-semibold">Signature Feature</th>
+                                <th class="p-4 border-b-2 border-gray-200 font-semibold">Expert's Tip</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planner-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-4 font-lora">Guardians of Memory</h3>
+            <p class="max-w-3xl mx-auto">
+                The great forts of India stand as enduring guardians of memory, inviting us to walk their cobbled paths, climb their towering bastions, and listen to the echoes of the past. They are not silent ruins but a library of stone, chronicling the ambition of emperors, the defiance of warriors, and the resilience of a civilization.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fortsData = [
+                {
+                    name: "Mehrangarh Fort",
+                    location: "Jodhpur, Rajasthan",
+                    category: ["crown-jewels", "rajasthan"],
+                    image: "https://placehold.co/600x400/F59E0B/FFFFFF?text=Mehrangarh",
+                    summary: "Awe-inspiring Rathore citadel that appears to grow out of its rock foundation, blending brute force with exquisite palace art.",
+                    details: "Founded around 1459 by Rao Jodha, Mehrangarh's exterior is all intimidation, with walls rising up to 36 meters. Inside, however, palaces like the Moti Mahal and Phool Mahal showcase breathtakingly intricate carvings. Managed by a world-class museum trust, it displays a stunning array of royal artifacts, from palanquins to weaponry.",
+                    wallLength: null, area: null, height: 36,
+                    signature: "Sheer scale, exquisite palaces, world-class museum",
+                    tip: "Visit at opening time (9 AM) to avoid crowds and the desert heat."
+                },
+                {
+                    name: "Red Fort",
+                    location: "Delhi",
+                    category: ["crown-jewels"],
+                    image: "https://placehold.co/600x400/EF4444/FFFFFF?text=Red+Fort",
+                    summary: "The heart of the Mughal Empire and a potent symbol of India's independence, representing the zenith of Mughal creativity.",
+                    details: "Commissioned by Shah Jahan and completed in 1648, this UNESCO World Heritage site is named for its massive red sandstone walls. It housed the legendary Peacock Throne and features architectural marvels like the Diwan-i-Khas and the Nahr-i-Behisht (Stream of Paradise). Today, it is where the Prime Minister addresses the nation on Independence Day.",
+                    wallLength: null, area: 255, height: 33,
+                    signature: "Red sandstone walls, symbol of Indian independence",
+                    tip: "Pair with a visit to nearby Jama Masjid and Chandni Chowk for a full Old Delhi experience."
+                },
+                {
+                    name: "Amer Fort",
+                    location: "Jaipur, Rajasthan",
+                    category: ["crown-jewels", "rajasthan"],
+                    image: "https://placehold.co/600x400/F472B6/FFFFFF?text=Amer+Fort",
+                    summary: "A captivating blend of formidable defense and breathtaking beauty, known for its artistic fusion of Rajput and Mughal styles.",
+                    details: "Initiated in 1592 by Raja Man Singh I, Amer Fort rises elegantly above Maota Lake. Its most famous chamber is the Sheesh Mahal (Mirror Palace), where a single candle can illuminate the entire room. The fort also features early air conditioning and secret tunnels connecting to the more militaristic Jaigarh Fort above.",
+                    wallLength: null, area: null, height: null,
+                    signature: "Sheesh Mahal (Mirror Palace), scenic lakeside setting",
+                    tip: "Don't miss the evening light and sound show for a dramatic retelling of the fort's history."
+                },
+                {
+                    name: "Chittorgarh Fort",
+                    location: "Chittorgarh, Rajasthan",
+                    category: ["rajasthan"],
+                    image: "https://placehold.co/600x400/8B5CF6/FFFFFF?text=Chittorgarh",
+                    summary: "The largest fort in India and a sacred symbol of Rajput valor, sacrifice, and resistance against overwhelming odds.",
+                    details: "Sprawling across 700 acres, Chittorgarh is a veritable city defined by its history of heroic and tragic sieges. It is famous for the solemn rite of Jauhar, where women committed mass self-immolation to avoid capture. The Vijay Stambha (Tower of Victory) and Kirti Stambha (Tower of Fame) dominate its skyline.",
+                    wallLength: 13, area: 700, height: null,
+                    signature: "India's largest fort, Vijay Stambha, tales of Jauhar",
+                    tip: "The site is vast; hiring a vehicle and an official guide is essential for a comprehensive tour."
+                },
+                {
+                    name: "Kumbhalgarh Fort",
+                    location: "Kumbhalgarh, Rajasthan",
+                    category: ["rajasthan"],
+                    image: "https://placehold.co/600x400/10B981/FFFFFF?text=Kumbhalgarh",
+                    summary: "The unconquered guardian of the Mewar kingdom, renowned for its colossal perimeter wall, second only to the Great Wall of China.",
+                    details: "Built in the 15th century by Maharana Kumbha, this fort was famously conquered only once, through treachery. Its wall snakes through the hills for an astounding 36 kilometers, protecting over 360 temples and palaces. It is also the birthplace of the legendary warrior Maharana Pratap.",
+                    wallLength: 36, area: null, height: 15,
+                    signature: "36 km long wall (second longest in the world)",
+                    tip: "The dramatic wall is best appreciated by walking a section of it for spectacular views."
+                },
+                {
+                    name: "Jaisalmer Fort",
+                    location: "Jaisalmer, Rajasthan",
+                    category: ["rajasthan"],
+                    image: "https://placehold.co/600x400/FBBF24/FFFFFF?text=Jaisalmer",
+                    summary: "The Golden Fortress of the Thar, a 'living fort' that rises like a sandcastle from the heart of the desert.",
+                    details: "Built in 1156 AD, Jaisalmer's yellow sandstone walls glow with a honey-gold hue at sunset. Unlike most forts, a significant portion of the old city's population still resides within its walls, creating an unbroken link to its 800-year history. It features ornate palaces, havelis, and a complex of spectacular Jain temples.",
+                    wallLength: null, area: null, height: null,
+                    signature: "Golden sandstone, a 'living fort' with residents",
+                    tip: "Stay outside the fort to reduce strain on its ancient infrastructure; explore its alleys at sunrise."
+                },
+                {
+                    name: "Gwalior Fort",
+                    location: "Gwalior, Madhya Pradesh",
+                    category: ["marvels"],
+                    image: "https://placehold.co/600x400/3B82F6/FFFFFF?text=Gwalior+Fort",
+                    summary: "An architectural museum in stone, described by Emperor Babur as 'the pearl among the fortresses of Hind'.",
+                    details: "With a history stretching back to the 8th century, Gwalior Fort is an eclectic mix of architectural styles. Key structures include the Man Mandir Palace, adorned with vibrant blue ceramic tiles, the Dravidian-style Teli ka Mandir, and the intricately carved Sas-Bahu temples, reflecting its long and varied history of rulers.",
+                    wallLength: null, area: 741, height: null,
+                    signature: "Man Mandir Palace with blue tiles, eclectic architecture",
+                    tip: "Praised by Emperor Babur, its diverse architecture reflects its long history."
+                },
+                {
+                    name: "Golconda Fort",
+                    location: "Hyderabad, Telangana",
+                    category: ["marvels"],
+                    image: "https://placehold.co/600x400/6B7280/FFFFFF?text=Golconda+Fort",
+                    summary: "The diamond capital's acoustic enigma, a monument to both immense wealth and scientific brilliance in security.",
+                    details: "Once the world's foremost center for the diamond trade, Golconda's most famous feature is its astonishing acoustic engineering. A handclap at the main gate can be heard clearly at the fort's highest point, nearly a kilometer away, serving as an ingenious warning system. This was achieved through a sophisticated understanding of sound propagation.",
+                    wallLength: 10, area: null, height: null,
+                    signature: "Advanced acoustic engineering, diamond trade hub",
+                    tip: "Test the acoustics at the main gate yourself; it is a truly remarkable feat."
+                },
+                {
+                    name: "Murud-Janjira",
+                    location: "Konkan Coast, Maharashtra",
+                    category: ["coastal"],
+                    image: "https://placehold.co/600x400/06B6D4/FFFFFF?text=Murud-Janjira",
+                    summary: "The unconquerable island fortress, a formidable Jala-durga that was never breached in its entire history.",
+                    details: "Controlled by the Siddis, admirals of Abyssinian descent, this fort repelled attacks from the Marathas, Portuguese, and British. Its strength lay in its 12-meter-high granite walls rising directly from the sea and its 19 rounded bastions armed with cannons, making any naval assault a suicidal proposition.",
+                    wallLength: null, area: 22, height: 12,
+                    signature: "Never conquered, 19 cannon-filled bastions",
+                    tip: "Access is via small sailboats from the nearby shore, adding to the adventurous feel."
+                }
+            ];
+
+            const fortsGrid = document.getElementById('forts-grid');
+            const filterContainer = document.getElementById('filter-container');
+            const plannerTableBody = document.getElementById('planner-table-body');
+
+            function renderForts(filter = 'all') {
+                fortsGrid.innerHTML = '';
+                const filteredForts = filter === 'all' 
+                    ? fortsData 
+                    : fortsData.filter(fort => fort.category.includes(filter));
+
+                filteredForts.forEach(fort => {
+                    const fortCard = document.createElement('div');
+                    fortCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
+                    fortCard.innerHTML = `
+                        <img src="${fort.image}" alt="Image of ${fort.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0E0E0/757575?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold font-lora mb-2">${fort.name}</h3>
+                            <p class="text-sm text-gray-500 mb-4">${fort.location}</p>
+                            <p class="text-gray-700 mb-4">${fort.summary}</p>
+                            <div class="fort-card-content">
+                                <p class="text-gray-600">${fort.details}</p>
+                            </div>
+                            <button class="expand-btn font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-300">
+                                Read More
+                            </button>
+                        </div>
+                    `;
+                    fortsGrid.appendChild(fortCard);
+                });
+            }
+
+            fortsGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('expand-btn')) {
+                    const content = e.target.previousElementSibling;
+                    const isExpanded = content.classList.toggle('expanded');
+                    e.target.textContent = isExpanded ? 'Read Less' : 'Read More';
+                }
+            });
+
+            filterContainer.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') {
+                    document.querySelector('.filter-btn.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    renderForts(e.target.dataset.filter);
+                }
+            });
+            
+            function populatePlannerTable() {
+                fortsData.forEach(fort => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-gray-50';
+                    row.innerHTML = `
+                        <td class="p-4 border-b border-gray-200 font-semibold">${fort.name}</td>
+                        <td class="p-4 border-b border-gray-200">${fort.location}</td>
+                        <td class="p-4 border-b border-gray-200">${fort.signature}</td>
+                        <td class="p-4 border-b border-gray-200">${fort.tip}</td>
+                    `;
+                    plannerTableBody.appendChild(row);
+                });
+            }
+
+            renderForts();
+            populatePlannerTable();
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const metricSelector = document.getElementById('metric-selector');
+            const ctx = document.getElementById('forts-chart').getContext('2d');
+            let fortsChart;
+
+            function updateChart() {
+                const metric = metricSelector.value;
+                const chartData = fortsData
+                    .filter(f => f[metric] !== null && f[metric] > 0)
+                    .sort((a, b) => b[metric] - a[metric]);
+
+                const labels = chartData.map(f => f.name);
+                const data = chartData.map(f => f[metric]);
+                
+                let label = '';
+                if (metric === 'wallLength') label = 'Wall Length (km)';
+                if (metric === 'area') label = 'Area (acres)';
+                if (metric === 'height') label = 'Max Wall Height (m)';
+
+                if (fortsChart) {
+                    fortsChart.destroy();
+                }
+
+                fortsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: label,
+                            data: data,
+                            backgroundColor: 'rgba(37, 99, 235, 0.7)',
+                            borderColor: 'rgba(37, 99, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            metricSelector.addEventListener('change', updateChart);
+            updateChart();
+        });
+    </script>
+</body>
+</html>

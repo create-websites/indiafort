@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Madhya Pradesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Madhya Pradesh's architectural heritage. It starts with an introduction to its central role in Indian history. The core sections cover: 1. The state's most formidable forts, like Gwalior. 2. A detailed look at its world-famous monuments, including the Khajuraho temples and Sanchi stupas. 3. A feature on the unique palaces of Mandu and Orchha. 4. Data visualizations analyzing the dominant architectural styles and materials. 5. A practical "When to Visit" guide. This structure is designed to showcase the incredible diversity of religious and secular architecture in the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's history and significance. -> Method: HTML/CSS). 2. Key Monuments (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the distinct features of Khajuraho's Nagara style and Sanchi's Buddhist stupas. -> Method: HTML/CSS). 3. Architectural Styles (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the influence of different dynasties on the state's heritage. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of sandstone, the key material for temple construction in the region. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Madhya Pradesh</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">The Heart of India's Heritage</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">From ancient stupas to medieval temples and romantic palaces, explore the architectural soul of a nation.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Madhya Pradesh</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Madhya Pradesh have been the seats of powerful dynasties for centuries, commanding strategic heights and trade routes. They are powerful symbols of the region's rich and often turbulent history.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gwalior Fort</h3>
+                    <p>Described by the Mughal emperor Babur as "the pearl amongst the fortresses of Hind," Gwalior Fort dominates the city from a massive rock outcrop. Its history spans over a thousand years, and it contains several historic palaces, temples, and magnificent rock-cut Jain statues.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Mandu Fort</h3>
+                    <p>Perched on a plateau, the fortified city of Mandu is a testament to the Malwa Sultanate. Enclosed by a 45 km wall, it is home to some of India's most evocative Afghan architecture, including palaces, mosques, and tombs, all set in a stunning natural landscape.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">World-Renowned Monuments</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Madhya Pradesh is home to some of the most significant and iconic monuments in India, recognized globally for their artistic and historical value.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Khajuraho Group of Monuments</h3>
+                    <p>A UNESCO World Heritage site, these Hindu and Jain temples are famous for their Nagara-style architecture and their incredibly detailed and intricate sculptures, which celebrate every facet of life. Built by the Chandela dynasty, they represent a pinnacle of Indian artistic expression.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Buddhist Monuments at Sanchi</h3>
+                    <p>Another UNESCO site, Sanchi is one of the oldest and most important Buddhist sites in India. The Great Stupa, originally commissioned by Emperor Ashoka in the 3rd century BCE, is a masterpiece of Buddhist art, renowned for its ornate gateways depicting scenes from the Buddha's life.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palaces of Romance & Royalty</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The palaces of Madhya Pradesh are famed for their unique architectural styles and romantic histories, from the Bundela strongholds to the pleasure-palaces of Mandu.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jahangir Mahal, Orchha</h3>
+                    <p>A stunning example of Bundela architecture, this palace was built in the 17th century to honor the visit of the Mughal emperor Jahangir. It is a unique blend of Mughal and Rajput styles, with delicate chhatris, jalis, and a symmetrical layout.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jahaz Mahal, Mandu</h3>
+                    <p>The "Ship Palace" is one of Mandu's most famous structures. Situated between two artificial lakes, it appears like a ship floating on the water. It served as a harem for the Sultan and is a masterpiece of imaginative design.</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Hindola Mahal, Mandu</h3>
+                    <p>The "Swinging Palace" gets its name from its distinctive sloping side walls, which create the illusion that it is swaying. This T-shaped building was an audience hall, showcasing the simple yet imposing architectural style of the Malwa Sultanate.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The monuments of Madhya Pradesh showcase a remarkable diversity of influences. The charts below analyze the dominant architectural styles and the primary materials used across the state's long history.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Dominant Architectural Styles</h3>
+                    <div class="chart-container">
+                        <canvas id="stylesChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Madhya Pradesh is a large state with a climate of extremes. The best time to visit is during the cooler winter months, which are ideal for exploring its vast array of outdoor heritage sites.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter season offers pleasant, cool weather, perfect for visiting Khajuraho, Sanchi, and the national parks. This is the most popular time for tourism.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoons bring lush greenery to the landscape, especially in places like Mandu. However, some national parks are closed, and travel can be affected by rain.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot across the state, making daytime sightseeing very difficult. This period is best avoided by most tourists.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('stylesChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Chandela (Nagara)', 'Buddhist (Stupa)', 'Malwa Sultanate', 'Bundela', 'Other'],
+                datasets: [{
+                    label: 'Influence on Major Monuments',
+                    data: [45, 25, 15, 10, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080', '#A7C7E7'], // Navy, Green, Saffron, Gray, Light Blue
+                    borderColor: '#FEFBF3',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { callback: value => value + '%' } },
+                    x: { ticks: { color: '#374151' } } 
+                },
+                plugins: { ...chartTooltipPlugin, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Sandstone', 'Brick & Stucco', 'Marble', 'Local Stone'],
+                datasets: [{
+                    data: [65, 20, 10, 5],
+                    backgroundColor: ['#FF9933', '#138808', '#000080', '#808080'], // Saffron, Green, Navy, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

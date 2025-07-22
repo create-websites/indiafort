@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Punjab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Punjab's architectural heritage. It starts with an introduction to its history as a martial and spiritual heartland. The core sections cover: 1. The state's most significant forts. 2. A detailed look at the defining features of Sikh architecture. 3. A feature on key palaces and monuments. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the blend of military, religious, and royal architecture in the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's history. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the unique features of Sikh architecture, such as gilded domes and frescoes. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the balance between religious, defensive, and royal structures. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of Nanak Shahi bricks and the extensive use of marble. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Punjab</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Five Rivers & Valiant Hearts</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a heritage of martial strength, spiritual devotion, and the royal grandeur of the Sikh Empire and princely states.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Punjab</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Punjab are symbols of its martial history, standing as silent witnesses to centuries of conflict and the rise of the powerful Sikh Empire.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gobindgarh Fort, Amritsar</h3>
+                    <p>Originally a mud fortress, this historic fort was reconstructed in the 18th century by Maharaja Ranjit Singh. Named after the 10th Sikh Guru, Guru Gobind Singh, it was a key military bastion of the Sikh Empire, housing treasures including the Koh-i-Noor diamond for a time.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Qila Mubarak, Bathinda</h3>
+                    <p>One of the oldest surviving forts in India, with origins believed to date back to the Kushan period. This monumental fort is famously associated with Razia Sultan, the first woman to rule Delhi, who was imprisoned here in the 13th century. Its high, imposing brick walls are a remarkable sight.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bahadurgarh Fort, Patiala</h3>
+                    <p>A fine example of Sikh fortification, this fort was originally built by a Mughal official and later renovated by Maharaja Karam Singh of Patiala. It is notable for its two concentric circular walls, a massive moat, and a beautifully designed Gurdwara and mosque within its premises.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Sikh Architecture</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The most defining architectural style of Punjab is Sikh architecture, which flourished under the patronage of the Sikh Gurus and later the rulers of the Sikh Empire. It is a unique synthesis of Mughal, Rajput, and indigenous Punjabi traditions.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gilded Domes</h3>
+                    <p>The most iconic feature is the fluted, lotus-shaped dome, often covered in gilded copper, as seen spectacularly on the Golden Temple. This creates a dazzling crown that symbolizes spiritual sanctity and royalty.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Arches, Chhatris & Jharokhas</h3>
+                    <p>The style incorporates multi-foil arches from Mughal architecture and ornate balconies (*jharokhas*) and rooftop pavilions (*chhatris*) from Rajput traditions, creating a rich and eclectic visual language.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Rich Interior Decoration</h3>
+                    <p>Interiors are lavishly decorated with intricate floral frescoes (*mohraqashi*), mirror-work (*tukri*), and stone inlay, showcasing exceptional craftsmanship and a deep reverence for beauty in sacred spaces.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Monuments & Palaces</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Punjab's monuments are centers of deep spiritual significance and royal splendor, from the holiest shrine of Sikhism to the opulent palaces of the princely states.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Harmandir Sahib (The Golden Temple)</h3>
+                    <p>The spiritual and cultural center of the Sikh faith, the Golden Temple is a breathtaking architectural masterpiece. Its serene placement in the middle of a sacred pool (*sarovar*) and its gleaming gold-plated exterior create an atmosphere of profound peace and devotion.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Sheesh Mahal, Patiala</h3>
+                    <p>Part of the old Moti Bagh Palace complex, the "Palace of Mirrors" was built by Maharaja Narinder Singh. It is a treasure trove of art, famed for its exquisite mirror-work, fine murals depicting scenes from mythology and poetry, and a gallery of miniature paintings.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Punjab is a story of faith, resilience, and royalty. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Punjab experiences a continental climate with hot summers and cool winters. The best time to explore its historic and sacred sites is during the winter season.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer pleasant, sunny days and cool nights, making it the perfect time for sightseeing in Amritsar, Patiala, and other heritage cities.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings humidity and significant rainfall, which can make travel and outdoor exploration less comfortable.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot, with temperatures regularly soaring. This period is generally challenging for tourism and extensive sightseeing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Sikh Style</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Religious (Gurdwaras)', data: [50], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Defensive (Forts)', data: [30], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Royal (Palaces)', data: [20], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Brick & Lime (Nanak Shahi)', 'Marble', 'Sandstone', 'Wood & Stucco'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#FF9933', '#FFFFFF', '#808080', '#138808'], // Saffron, White, Gray, Green
+                    borderColor: '#374151',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

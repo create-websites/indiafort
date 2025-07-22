@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Delhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Delhi's architectural heritage. It starts with an introduction to its history as an imperial capital. The core sections cover: 1. The city's monumental forts. 2. A detailed look at its defining monuments from the Sultanate and Mughal eras. 3. A feature on the grand structures of the British Raj. 4. Data visualizations analyzing the purpose and materials of Delhi's architecture. 5. A practical "When to Visit" guide. This structure is designed to showcase the layers of imperial history that define the city. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's imperial significance. -> Method: HTML/CSS). 2. Key Monuments (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the importance of iconic sites like Qutb Minar and Humayun's Tomb. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the blend of imperial, funerary, and religious structures. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of Mughal red sandstone and marble. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Delhi</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">City of Empires</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore the layers of history in a city that has served as the capital for centuries of powerful rulers.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Delhi</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Delhi's forts are not just defensive structures; they were entire walled cities that served as the political and cultural heart of vast empires.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Red Fort (Lal Qila)</h3>
+                    <p>The zenith of Mughal power, the Red Fort was built by Emperor Shah Jahan in the 17th century as the palace-fort of his new capital, Shahjahanabad. This UNESCO World Heritage site, with its massive red sandstone walls, housed palaces, audience halls, and gardens, and remains a potent symbol of India's sovereignty.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Purana Qila (Old Fort)</h3>
+                    <p>One of the oldest forts in Delhi, its current form was built by Sher Shah Suri and the Mughal emperor Humayun. Believed to be located on the site of the ancient city of Indraprastha from the Mahabharata, its massive gateways and walls represent an earlier, more rugged style of Sultanate architecture.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Iconic Monuments</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Delhi is home to some of the most significant monuments in India, showcasing the transition from the early Sultanate period to the high refinement of the Mughal era.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Qutb Minar Complex</h3>
+                    <p>A UNESCO World Heritage site, this complex marks the arrival of the Delhi Sultanate. The towering Qutb Minar, a 73-meter-high victory tower, and the Quwwat-ul-Islam Mosque, the first mosque in Delhi, are prime examples of early Indo-Islamic architecture, famously using materials from demolished temples.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Humayun's Tomb</h3>
+                    <p>Another UNESCO site, this magnificent garden-tomb was commissioned in the 16th century and was the first of its kind on the Indian subcontinent. Its perfect symmetry, use of red sandstone and white marble, and grand *charbagh* garden set the architectural precedent for the Taj Mahal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">The Architecture of the Raj</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">After the capital of British India was shifted to Delhi in 1911, a new imperial city was built. Designed by Edwin Lutyens and Herbert Baker, this architecture was meant to symbolize the power and permanence of the British Empire.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Rashtrapati Bhavan (Viceroy's House)</h3>
+                    <p>The centerpiece of Lutyens' Delhi, this monumental palace was the residence of the Viceroy of India. A masterpiece of symmetry and scale, it blends Western classical design with Indian motifs like Buddhist railings and temple bells, and is now the official residence of the President of India.</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">India Gate</h3>
+                    <p>This 42-meter-high archway is a war memorial dedicated to the soldiers of British India who died in World War I. Designed by Lutyens, its triumphal arch form is a powerful and iconic landmark at the heart of the city's ceremonial axis, Rajpath.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Delhi's architecture is a story of imperial power. The charts below analyze the purpose of its major monuments and the primary materials used by the empires that built them.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Delhi experiences extreme weather, with very hot summers and cold winters. The best time to explore its many outdoor monuments is during the pleasant spring and autumn months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer cool, sunny days, perfect for sightseeing. This is the most popular tourist season, with pleasant weather for exploring forts and tombs.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings relief from the heat but also high humidity and heavy rain, which can disrupt travel and sightseeing plans.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot, with temperatures often exceeding 40°C (104°F). It is advisable to avoid this period for extensive outdoor activities.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">The Raj</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Imperial (Forts, Palaces, Admin)', data: [50], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Funerary (Tombs)', data: [30], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Religious (Mosques, Temples)', data: [20], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Red Sandstone', 'White Marble', 'Dholpur Stone (Raj)', 'Local Rubble & Quartzite'],
+                datasets: [{
+                    data: [55, 25, 15, 5],
+                    backgroundColor: ['#FF9933', '#FFFFFF', '#808080', '#138808'], // Saffron, White, Gray, Green
+                    borderColor: '#374151',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

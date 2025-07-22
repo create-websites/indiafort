@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Telangana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Telangana's architectural heritage. It starts with an introduction to its role as a dynastic crossroads. The core sections cover: 1. The state's most formidable forts, like Golconda and Warangal. 2. A detailed look at the defining architectural styles of the Kakatiyas and Qutb Shahis. 3. A feature on key palaces and monuments, including the Chowmahalla Palace. 4. Data visualizations analyzing the dominant architectural influences and materials. 5. A practical "When to Visit" guide. This structure is designed to showcase the powerful blend of Hindu and Islamic architectural traditions in the Deccan. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's history and strategic importance. -> Method: HTML/CSS). 2. Architectural Styles (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the distinct features of Kakatiya temple gateways and Qutb Shahi tombs. -> Method: HTML/CSS). 3. Architectural Influences (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the influence of the major dynasties that shaped the region. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of local granite and the extensive use of lime stucco for ornamentation. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Telangana</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Where Dynasties Converge</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a rich heritage of mighty forts, grand tombs, and opulent palaces from the Kakatiyas, Qutb Shahis, and Nizams.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Telangana</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Telangana's forts are powerful symbols of the Deccan's historical importance, serving as the military and political nerve centers for centuries of powerful rulers.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Golconda Fort</h3>
+                    <p>One of India's most famous forts, Golconda was the capital of the Qutb Shahi dynasty. Famed for its acoustics, advanced water supply system, and its history as a major diamond market, its grandeur is a testament to the wealth and power of the Deccan Sultanates.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Warangal Fort</h3>
+                    <p>The heartland of the Kakatiya dynasty, this 13th-century fort is renowned for its magnificent stone gateways, the *Kakatiya Kala Thoranam*. These ornate arches, now part of Telangana's state emblem, showcase the unique artistic achievements of the Kakatiyas.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bhongir Fort</h3>
+                    <p>Perched on a massive monolithic rock, Bhongir Fort is a unique and imposing structure. Built by a Chalukya ruler in the 10th century, its dramatic location and steep climb made it a formidable defensive outpost for centuries.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Dominant Architectural Styles</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Telangana's architecture is a rich blend of indigenous Kakatiya traditions and the influential Perso-Islamic style of the Qutb Shahi dynasty, creating a unique Deccani identity.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kakatiya Temple Art</h3>
+                    <p>The Kakatiyas perfected a distinct style of temple architecture. They used polished granite and sandstone, and their temples are known for intricately carved pillars, brackets, and the iconic free-standing ceremonial gateways (*thoranams*).</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Qutb Shahi (Deccani) Style</h3>
+                    <p>This style is a fusion of Persian, Pashtun, and local Deccani traditions. It is characterized by grand arches, bulbous domes with lotus-petal bases, ornate stucco work, and the creation of magnificent tomb complexes and mosques.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Asaf Jahi (Nizam) Palaces</h3>
+                    <p>The architecture of the Nizams of Hyderabad reflects a later European influence. Their palaces, like the Chowmahalla Palace, feature a synthesis of Neoclassical, Baroque, and Indo-Saracenic elements, showcasing immense luxury and cosmopolitan taste.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Palaces & Monuments</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The monuments of Telangana showcase the grandeur of its ruling dynasties, from royal tombs that dominate the skyline to opulent palaces that were the heart of courtly life.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Qutb Shahi Tombs</h3>
+                    <p>Located near Golconda Fort, this complex contains the tombs and mosques built by the various rulers of the Qutb Shahi dynasty. Each tomb is a grand structure of grey granite with intricate stucco ornamentation, showcasing a unique blend of Persian and Indian architectural styles.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chowmahalla Palace</h3>
+                    <p>The seat of the Asaf Jahi dynasty, this palace was the official residence of the Nizams of Hyderabad. Its name means "Four Palaces," and the complex consists of magnificent courtyards and grand halls, most notably the Khilwat Mubarak, where the Nizams held their court.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural landscape of Telangana tells a story of successive powerful dynasties. The charts below analyze the dominant influences on the state's built heritage and the primary materials used in their construction.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Dominant Architectural Influences</h3>
+                    <div class="chart-container">
+                        <canvas id="influenceChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Telangana has a hot, semi-arid climate. The best time to explore its historical sites is during the cooler, drier winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - February)</h3>
+                    <p>The winter months offer the most pleasant weather for sightseeing. It's the ideal time to explore the sprawling Golconda Fort or the historic sites of Hyderabad.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings moderate to heavy rain, providing relief from the heat and turning the landscape green. While pleasant, outdoor exploration can be affected by showers.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (March - June)</h3>
+                    <p>Summers in Telangana are extremely hot and dry, with temperatures often climbing very high. This season is generally challenging for tourism.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Architectural Styles</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('influenceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Qutb Shahi', 'Kakatiya', 'Asaf Jahi (Nizam)', 'Chalukyan', 'Other'],
+                datasets: [{
+                    label: 'Influence on Major Monuments',
+                    data: [45, 30, 15, 5, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080', '#A7C7E7'], // Navy, Green, Saffron, Gray, Light Blue
+                    borderColor: '#FEFBF3',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { callback: value => value + '%' } },
+                    x: { ticks: { color: '#374151' } } 
+                },
+                plugins: { ...chartTooltipPlugin, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Granite', 'Lime Stucco', 'Sandstone', 'Wood & Brick'],
+                datasets: [{
+                    data: [60, 20, 15, 5],
+                    backgroundColor: ['#000080', '#FF9933', '#808080', '#138808'], // Navy, Saffron, Gray, Green
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

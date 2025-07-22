@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Assam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Assam's architectural heritage. It starts with an introduction to the Ahom kingdom. The core sections cover: 1. The state's significant forts and fortifications ('Garhs'). 2. A detailed look at the defining features of Ahom architecture. 3. A feature on key palaces and monuments like the Rang Ghar and Talatal Ghar. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the unique architecture of the Ahom dynasty. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of Ahom defensive structures. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the unique features of Ahom architecture, like the use of brick and multi-storied pavilions. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the balance between royal, funerary, and civic structures. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of baked brick and wood in Ahom construction. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Assam</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Legacy of the Ahom Kingdom</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of royal pavilions, multi-storied palaces, and sacred burial mounds from the mighty rulers of the Brahmaputra valley.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Fortifications of Assam</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The defense of the Ahom kingdom relied less on single, massive forts and more on extensive systems of earthen ramparts (*garhs*), moats, and strategic outposts that utilized the region's riverine geography.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gargaon (Kareng Ghar) Fortifications</h3>
+                    <p>The area around the Ahom capital at Gargaon was protected by a network of brick walls and earthen ramparts. The royal palace itself, the Kareng Ghar, was the central fortified structure, designed as a defensive stronghold as much as a royal residence.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">The 'Garhs' of Assam</h3>
+                    <p>The Ahom military strategy involved creating long defensive embankments, often several kilometers long, to protect their capitals and control territory. These *garhs*, like the one at Samdhara, were crucial in repelling numerous invasions, including those by the Mughals.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Ahom Architectural Style</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of the Ahom dynasty is a unique synthesis of indigenous traditions and influences from the Mughals and Bengal, adapted to the local climate and materials.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Brick and Wood Construction</h3>
+                    <p>The Ahoms were master builders using special thin, baked bricks known as *lakhori* bricks, bonded with a paste of rice, eggs, and lime. Wood was used extensively for pillars, beams, and upper floors.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Arches and Domes</h3>
+                    <p>Influenced by Mughal architecture, the Ahoms incorporated arches and domes into their structures. However, their domes are typically more bulbous and less towering, often placed atop octagonal or square bases.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Multi-Storied Pavilions</h3>
+                    <p>A key feature is the construction of multi-storied, open-sided pavilions, like the Rang Ghar, which served as royal viewing stands. These often feature curved *do-chala* or *char-chala* roofs adapted from Bengali styles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Palaces & Monuments</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The monuments of Assam are a testament to the power and cultural vibrancy of the Ahom kingdom, from royal palaces to unique funerary mounds.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Rang Ghar, Sivasagar</h3>
+                    <p>Often called the "Colosseum of the East," this two-storied, octagonal pavilion is one of Asia's oldest surviving amphitheaters. Built in the 18th century, it was used by Ahom kings and nobles to watch sports like buffalo fights and elephant fights.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Talatal Ghar, Sivasagar</h3>
+                    <p>This is the largest of the Ahom monuments. It was initially built as an army base and features several underground levels (Talatal) and a seven-storied palace (Kareng Ghar) above ground, with secret tunnels and exit routes for defense.</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Charaideo Maidams</h3>
+                    <p>The royal burial mounds of the Ahom kings, often referred to as the "Pyramids of Assam." This sacred site contains numerous *maidams* where the remains of Ahom royalty were interred. These mounds represent a unique and ancient funerary tradition.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Assam is a story of a powerful regional kingdom. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Assam has a subtropical climate with high humidity and a strong monsoon season. The best time to visit is during the cooler, drier winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - April)</h3>
+                    <p>The winter and spring months offer pleasant, cool weather, ideal for exploring historical sites and enjoying the Bihu festivals. This is the best time for tourism.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The monsoon brings very heavy rainfall, which can lead to flooding and disrupt travel plans, especially for visiting wildlife sanctuaries.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (May)</h3>
+                    <p>The period just before the monsoon is hot and extremely humid, making it less comfortable for extensive travel and sightseeing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Fortifications</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Ahom Style</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Royal (Palaces)', data: [40], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Funerary (Maidams)', data: [25], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Civic / Recreational', data: [20], backgroundColor: '#138808' },   // Green
+                    { label: 'Religious (Temples)', data: [15], backgroundColor: '#808080' } // Gray
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Baked Brick (Lakhori)', 'Wood', 'Laterite Stone', 'Stucco & Other'],
+                datasets: [{
+                    data: [50, 25, 15, 10],
+                    backgroundColor: ['#FF9933', '#138808', '#808080', '#A7C7E7'], // Saffron, Green, Gray, Light Blue
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Gujarat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Gujarat's architectural heritage. It starts with an introduction to its history as a hub of trade and craftsmanship. The core sections cover: 1. The state's most significant forts. 2. A detailed look at its unique architectural contributions, especially stepwells and the Gujarat Sultanate style. 3. A feature on key palaces. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the blend of functional, religious, and royal architecture in the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's history. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the unique features of stepwells ('vavs') and the intricate 'jalis' of the Gujarat style. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the unique importance of civic and water-related structures alongside religious and defensive ones. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of local sandstone. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Gujarat</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">A Legacy of Trade & Craftsmanship</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">From ancient Indus Valley cities to magnificent stepwells and grand palaces, explore a land of rich architectural diversity.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Gujarat</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Gujarat's strategic location and long coastline made it a hub of trade and a target for conquest, leading to the construction of formidable forts by various rulers.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Uparkot Fort, Junagadh</h3>
+                    <p>With walls over 20 meters high in some places, this ancient fort has origins dating back over 2300 years. It contains fascinating structures like Buddhist rock-cut caves, stepwells (*vavs*), and a mosque built from a converted temple, showcasing layers of history.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Champaner-Pavagadh</h3>
+                    <p>A UNESCO World Heritage site, this area includes a vast complex of fortifications, palaces, religious buildings, and water-retaining installations from the 8th to 14th centuries. The fortified city of Champaner stands at the base of the Pavagadh hill.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bhujia Fort, Bhuj</h3>
+                    <p>Built to defend the city of Bhuj, this fort stands on a hill overlooking the region. Constructed by the Jadeja rulers of Kutch, it played a crucial role in several battles and remains a powerful symbol of the kingdom's military strength.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Unique Architectural Marvels</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Gujarat is home to some of the most unique and artistically significant architectural forms in India, from its ancient roots to the celebrated Indo-Islamic style of the Gujarat Sultanate.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Indus Valley City of Dholavira</h3>
+                    <p>A UNESCO World Heritage site, Dholavira was a major city of the Indus Valley Civilization. It is renowned for its sophisticated water management system, one of the earliest found in the world, and its meticulously planned urban layout with massive earthen and stone fortifications.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Elaborate Stepwells (Vavs)</h3>
+                    <p>Gujarat is famous for its ornate, subterranean stepwells. More than just water sources, these were cool, subterranean community spaces. UNESCO sites like Rani ki Vav and Adalaj Vav are masterpieces of intricate carving, turning functional structures into underground temples.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gujarat Sultanate Style</h3>
+                    <p>This distinct Indo-Islamic style blends Hindu and Jain temple traditions with Islamic architectural principles. It is famed for its exquisitely carved stone latticework (*jalis*), best exemplified by the "tree of life" motif at the Sidi Saiyyed Mosque in Ahmedabad.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palaces of the Princely States</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The palaces of Gujarat reflect the immense wealth and cosmopolitan tastes of its princely rulers, showcasing a grand fusion of Indian and European architectural styles.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Laxmi Vilas Palace, Vadodara</h3>
+                    <p>The magnificent residence of the Gaekwad dynasty, this palace is reputed to be four times the size of Buckingham Palace. Completed in 1890, it is a spectacular example of the Indo-Saracenic style, featuring a stunning collection of mosaics, chandeliers, and artworks.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Prag Mahal, Bhuj</h3>
+                    <p>Designed in the 19th century by a British architect, this palace is a striking example of the Italian Gothic style in the heart of Kutch. Its grand halls, Corinthian pillars, and a 45-meter-high clock tower offer a dramatic contrast to the surrounding desert landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Gujarat's architecture tells a story of trade, community, and royalty. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Gujarat has a hot and mostly dry climate. The best time to visit its diverse heritage sites is during the cooler winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter season offers pleasant and mild weather, ideal for exploring the Rann of Kutch, visiting ancient sites, and enjoying cultural festivals.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings relief from the heat and makes the landscape green, but it can be very humid. Travel to some remote areas might be affected.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot and dry, with high temperatures making daytime sightseeing very challenging. This period is best avoided for tourism.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Architectural Styles</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Religious (Temples, Mosques)', data: [35], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Civic / Water (Stepwells, Gates)', data: [30], backgroundColor: '#138808' },   // Green
+                    { label: 'Defensive (Forts)', data: [20], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Royal (Palaces)', data: [15], backgroundColor: '#808080' } // Gray
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Sandstone', 'Brick (Indus Valley)', 'Marble', 'Wood & Other'],
+                datasets: [{
+                    data: [60, 20, 15, 5],
+                    backgroundColor: ['#FF9933', '#808080', '#FFFFFF', '#138808'], // Saffron, Gray, White, Green
+                    borderColor: '#374151',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

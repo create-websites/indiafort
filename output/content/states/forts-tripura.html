@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Tripura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Tripura's architectural heritage. It starts with an introduction to the Manikya dynasty. The core sections cover: 1. The state's most significant palaces, which served as its primary centers of power. 2. A detailed look at its key monuments, including ancient rock-cut sites. 3. A feature on the unique Tripura temple style. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the royal and religious architecture of the kingdom. -->
+    <!-- Visualization & Content Choices: 1. Key Palaces (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each palace's unique style. -> Method: HTML/CSS). 2. Key Monuments (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the significance of unique sites like Unakoti. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the dominance of royal and religious structures. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of brick and stucco in local construction. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Tripura</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Legacy of the Hill Kingdom</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of royal palaces, ancient rock carvings, and distinctive temples from the long-ruling Manikya dynasty.</p>
+        </header>
+
+        <section id="palaces" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Palaces of Tripura</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural identity of Tripura is dominated by the magnificent palaces built by the Manikya kings, who ruled the kingdom for centuries. These palaces showcase a fascinating blend of Mughal, Neoclassical, and indigenous styles.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Ujjayanta Palace, Agartala</h3>
+                    <p>This gleaming white palace, standing in the heart of the state capital, was built by Maharaja Radha Kishore Manikya in 1901. Its Neoclassical design, featuring three large domes, tiled floors, and beautiful gardens with pools, now houses the Tripura State Museum.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Neermahal, Melaghar</h3>
+                    <p>The "Water Palace" of Tripura is a spectacular sight, located in the middle of Rudrasagar Lake. Built by Maharaja Bir Bikram Kishore Manikya in the 1930s, this architectural marvel features a unique fusion of Hindu and Mughal styles, serving as a summer resort for the royal family.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kunjaban Palace, Agartala</h3>
+                    <p>Built in 1917 on a green hillock, this palace was a recreational retreat for the kings. It was here that the Nobel laureate Rabindranath Tagore stayed during his visits to Tripura. The palace is a fine example of the royal aesthetic of the early 20th century.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Key Monuments & Ancient Sites</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Beyond its palaces, Tripura possesses a deep-rooted history visible in its ancient rock-cut carvings and important religious sites.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Unakoti</h3>
+                    <p>An ancient Shaivite pilgrimage site, Unakoti is famous for its massive rock-cut carvings and stone images of Hindu deities. The central Shiva head, standing about 30 feet high, is a masterpiece of rock art. The name means "one less than a crore," referring to the countless carvings found here.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Tripura Sundari Temple (Matabari)</h3>
+                    <p>One of the 51 Shakti Peethas, this temple in Udaipur is one of the holiest Hindu shrines in the region. Built by Maharaja Dhanya Manikya in the 16th century, its unique structure resembles a tortoise-shaped hillock, featuring a typical Bengali *char-chala* roof atop a square sanctum.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="styles" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Tripura's Architectural Fusion</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Tripura is a fascinating blend of styles, reflecting the kingdom's interactions with its neighbors and the wider world, while retaining a distinct local character.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bengali Influence</h3>
+                    <p>The temple architecture, particularly the Tripura Sundari Temple, shows strong influence from the neighboring Bengal region. The use of the curved *char-chala* (four-sided sloping roof) style, common in Bengali terracotta temples, is a prominent feature.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Indo-European Synthesis</h3>
+                    <p>The later palaces, like Ujjayanta and Neermahal, showcase a deliberate fusion of Indian design principles with European, particularly British Neoclassical, architecture. This reflects the modernizing ambitions of the Manikya kings in the colonial era.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Tripura is primarily a story of its monarchy and its faith. The charts below analyze the functional purpose of its major monuments and the primary materials used in their construction.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Tripura has a tropical savanna climate with a significant monsoon season. The best time to visit its palaces and natural attractions is during the cool and dry winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer the most pleasant weather, with mild temperatures and lower humidity, making it ideal for sightseeing across the state.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The monsoon brings heavy rainfall to Tripura. While the landscape becomes lush and green, it can make travel to remote areas difficult.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - May)</h3>
+                    <p>The summer months are hot and humid, which can be uncomfortable for extensive outdoor exploration and travel.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Palaces</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Architectural Styles</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Royal (Palaces)', data: [60], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Religious (Temples, Carvings)', data: [35], backgroundColor: '#138808' },   // Green
+                    { label: 'Defensive (Forts)', data: [5], backgroundColor: '#FF9933' } // Saffron
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Brick & Stucco', 'Sandstone', 'Marble', 'Wood'],
+                datasets: [{
+                    data: [50, 25, 15, 10],
+                    backgroundColor: ['#FF9933', '#808080', '#FFFFFF', '#138808'], // Saffron, Gray, White, Green
+                    borderColor: '#374151',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

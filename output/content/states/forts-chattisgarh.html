@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Chhattisgarh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+       .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+       .text-accent-saffron { color: #FF9933; }
+       .text-accent-green { color: #138808; }
+       .border-accent-saffron { border-color: #FF9933; }
+       .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Chhattisgarh</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Ancient Tribes & Lost Kingdoms</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a rich heritage of ancient temples, formidable forts, and the grand palaces of a land steeped in history.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Chhattisgarh</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Chhattisgarh are powerful reminders of the region's past, built by dynasties like the Kalachuris to defend their territories and project their power.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Ratanpur Fort</h3>
+                    <p>Once the capital of the Kalachuri dynasty, this ancient fort near Bilaspur is a site of immense historical significance. Though now in a dilapidated state, its ruins, including exquisite rock carvings and grand gateways like the Singh Dwar, showcase the architectural brilliance of its builders. [7, 8, 9, 10, 11]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chaiturgarh Fort (Lafagarh)</h3>
+                    <p>Perched at an altitude of over 3,000 feet, Chaiturgarh is considered one of India's strongest natural forts. Its defenses rely on the formidable cliffs that surround it. Built by the Kalachuri dynasty, it houses the famous Mahishasur Mardini temple and offers breathtaking views of the landscape. [12, 13, 14, 15, 16]</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Temples & Monuments</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Chhattisgarh is a treasure trove of ancient temples, showcasing a rich history of religious art and architecture from the Gupta period to the reign of the Kalachuris.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bhoramdeo Temple Complex</h3>
+                    <p>Famously known as the "Khajuraho of Chhattisgarh," this 11th-century temple complex is dedicated to Lord Shiva. Its walls are adorned with stunningly detailed and erotic sculptures, similar to those at Khajuraho, representing a pinnacle of the Nagara style of architecture in the region. [7, 17, 18, 19, 20, 21]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Devrani-Jethani Temples, Tala</h3>
+                    <p>These 5th-6th century temples are among the earliest in the region. The site is famous for the excavation of a unique and colossal Rudra-Shiva sculpture, a masterpiece of Gupta-era art where the deity's form is composed of various animals and human heads. [7, 22, 23, 24, 25, 26]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palaces of the Princely States</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The palaces of Chhattisgarh reflect the grandeur of its former princely states, blending traditional Indian designs with colonial-era architectural styles.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bastar Palace, Jagdalpur</h3>
+                    <p>The historic seat of the rulers of the Bastar kingdom, this palace is a beautiful example of regional architecture. It served as the administrative center and royal residence after the capital was shifted from Barsur. Today, it houses a museum showcasing the region's rich tribal and royal heritage. [7, 22, 27, 28, 29, 30, 31]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kanker Palace</h3>
+                    <p>Built in the early 20th century, this palace showcases an elegant Colonial style of architecture. Once the residence of the British Agent, it is now a heritage hotel run by the royal family, offering visitors a glimpse into the regal lifestyle of a bygone era. [7, 32, 33, 34, 35]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Chhattisgarh is dominated by its rich history of temple building. The charts below analyze the functional purpose of its major monuments and the primary materials used in their construction.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Chhattisgarh has a tropical climate with hot summers and a pleasant winter. The best time to explore its historical sites is during the cooler, drier months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer the most pleasant weather, with mild temperatures and clear skies, making it perfect for visiting temples, forts, and the state's famous waterfalls. [36, 37]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings lush greenery to the landscape, but heavy rainfall can make travel to remote archaeological sites difficult. [37]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot and humid. This period is generally challenging for tourism and extensive outdoor sightseeing. [37]</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets:, backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Defensive (Forts)', data: [2], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Royal (Palaces)', data: [3], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [4, 5, 3, 6],
+                    backgroundColor: ['#808080', '#FF9933', '#138808', '#A7C7E7'], // Gray, Saffron, Green, Light Blue
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

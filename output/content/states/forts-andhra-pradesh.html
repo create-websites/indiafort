@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Andhra Pradesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Andhra Pradesh's architectural heritage. It starts with an introduction to its ancient roots. The core sections cover: 1. The state's formidable forts, highlighting their strategic canyon and hill locations. 2. A detailed look at the defining architectural styles, focusing on Buddhist and Vijayanagara influences. 3. A feature on key palaces and monuments like Lepakshi. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the unique blend of religious and military architecture in the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's unique setting and history. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the distinct features of Buddhist stupas and Vijayanagara temple art. -> Method: HTML/CSS). 3. Structure Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the balance between religious and defensive structures in Andhra's history. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the reliance on local granite and the importance of brick and stucco for stupa construction. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Andhra Pradesh</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Echoes of Empires and Ancient Faiths</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a rich heritage of Buddhist stupas, formidable canyon forts, and magnificent temple architecture.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Andhra Pradesh</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Andhra Pradesh are dramatic testaments to the region's strategic importance, built by dynasties like the Vijayanagara, Qutb Shahi, and local chieftains to command crucial trade routes and defend their territories.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Gandikota Fort</h3>
+                    <p>Known as the "Grand Canyon of India," this fort is perched on the edge of a stunning gorge carved by the Penna River. Its massive red sandstone walls enclose ancient temples, a mosque, and granaries, offering breathtaking views and a glimpse into its storied past.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kondapalli Fort</h3>
+                    <p>Built in the 14th century, this hill fort near Vijayawada has been held by various dynasties. It is known for its three successive defensive gateways, numerous reservoirs, and the nearby village famous for its traditional wooden toys.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chandragiri Fort</h3>
+                    <p>This 11th-century fort gained prominence as the last capital of the Vijayanagara Empire. It is renowned for the Raja Mahal and Rani Mahal palaces, which showcase a beautiful blend of Vijayanagara and Indo-Saracenic architectural styles.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Dominant Architectural Styles</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Andhra Pradesh has been a crucible of architectural innovation, from its role as a major center for Buddhism to its glorious temples built in the distinctive Vijayanagara style.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Buddhist Stupas & Viharas</h3>
+                    <p>The region was a cradle of Buddhism for centuries. Sites like Amaravati and Nagarjunakonda were home to magnificent stupas (hemispherical mounds for relics) and viharas (monasteries), adorned with intricate narrative sculptures depicting the life of the Buddha.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Vijayanagara Temple Art</h3>
+                    <p>This style is characterized by its grandeur and elaborate ornamentation. Key features include large, open-air pillared halls (*mandapas*), composite pillars carved with figures of deities and mythical animals, and tall gateway towers (*gopurams*).</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Rock-Cut Heritage</h3>
+                    <p>The state has a rich tradition of rock-cut architecture. The Undavalli Caves, carved out of a solid sandstone hillside, feature a massive reclining statue of Vishnu and showcase the skill of ancient artisans in shaping stone into multi-storied structures.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Palaces & Monuments</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Beyond the forts, Andhra Pradesh is home to unique monuments and palaces that are masterpieces of art and architecture.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Lepakshi Temple (Veerabhadra Temple)</h3>
+                    <p>A stunning example of the Vijayanagara style, this temple is famous for its exquisite sculptures, including a massive Nandi bull carved from a single stone, and its remarkable ceiling frescoes. The "hanging pillar" is an engineering marvel that continues to fascinate visitors.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chandragiri Palaces (Raja & Rani Mahal)</h3>
+                    <p>Within the Chandragiri Fort, these palaces are the finest examples of Vijayanagara palatial architecture. Built of stone, brick, and lime mortar, they feature beautiful arches, multiple levels, and crowning towers, demonstrating a graceful fusion of Hindu and Islamic design principles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The monuments of Andhra Pradesh reflect a history where religious patronage and military strategy were equally important. The charts below analyze the dominant architectural influences and material choices in the state.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Dominant Architectural Influences</h3>
+                    <div class="chart-container">
+                        <canvas id="influenceChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Andhra Pradesh has a hot and humid climate for most of the year. Planning your visit during the cooler months is essential for a comfortable experience.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - February)</h3>
+                    <p>The winter months are the best time to visit. The weather is pleasant and cool, making it ideal for exploring outdoor sites like Gandikota and the temples of Lepakshi.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The state receives rainfall during this period, which brings relief from the heat and makes the landscape green. However, travel can sometimes be hindered by heavy showers.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (March - June)</h3>
+                    <p>Summer is extremely hot and humid, with temperatures soaring. It is generally not recommended for tourism as sightseeing can be very uncomfortable.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Architectural Styles</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('influenceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Vijayanagara', 'Buddhist', 'Qutb Shahi', 'Chalukyan', 'Colonial'],
+                datasets: [{
+                    label: 'Influence on Major Monuments',
+                    data: [40, 30, 15, 10, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080', '#A7C7E7'], // Navy, Green, Saffron, Gray, Light Blue
+                    borderColor: '#FEFBF3',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { callback: value => value + '%' } },
+                    x: { ticks: { color: '#374151' } } 
+                },
+                plugins: { ...chartTooltipPlugin, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Granite', 'Brick & Stucco', 'Sandstone', 'Laterite Stone'],
+                datasets: [{
+                    data: [55, 25, 15, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080'], // Navy, Green, Saffron, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

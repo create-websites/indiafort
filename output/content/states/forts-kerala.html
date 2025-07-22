@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Kerala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Kerala's architectural heritage. It starts with an introduction to its unique identity shaped by the spice trade and monsoon climate. The core sections cover: 1. The state's most significant coastal forts. 2. A detailed look at the defining features of traditional Kerala architecture. 3. A feature on key palaces and monuments. 4. Data visualizations analyzing the dominant architectural influences and materials. 5. A practical "When to Visit" guide. This structure is designed to showcase the elegant and climate-responsive architecture of the region. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's colonial history and strategic importance. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the unique features of Kerala's climate-adapted design, like sloping roofs and courtyards. -> Method: HTML/CSS). 3. Architectural Influences (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the balance of influence between local kingdoms and European colonial powers. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of local materials like laterite and wood, which are central to the Kerala style. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Kerala</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Architecture of the Spice Coast</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of elegant wooden palaces, colonial sea forts, and climate-responsive design.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Kerala</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Kerala's coastline, central to the global spice trade for centuries, is dotted with forts built by European powers—the Portuguese, Dutch, and British—to protect their commercial interests and exert control over the region.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bekal Fort</h3>
+                    <p>The largest and best-preserved fort in Kerala, Bekal's massive laterite walls rise dramatically from the sea. Its unique features include an observation tower offering panoramic views and defensive structures designed to withstand naval attacks. Its construction highlights a blend of local and military engineering.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Fort Kochi (Fort Emmanuel)</h3>
+                    <p>Built by the Portuguese in 1503, this was the first European fort in India. While much of the fort is now in ruins, its legacy defines the historic Fort Kochi area, with its blend of Portuguese, Dutch, and British colonial architecture, including the famous Chinese fishing nets.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">St. Angelo Fort, Kannur</h3>
+                    <p>This massive triangular laterite fort juts into the Arabian Sea. Built by the first Portuguese viceroy in 1505, it later passed to the Dutch and then the British. Its formidable sea-facing walls and bastions are a testament to centuries of colonial military presence on the Malabar Coast.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Traditional Kerala Architecture</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Kerala's indigenous architectural style is a unique and sustainable response to its tropical monsoon climate. It emphasizes natural materials and ventilation, creating structures that are both functional and aesthetically elegant.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Sloping Roofs</h3>
+                    <p>The most distinctive feature is the long, steep, tiled roof designed to withstand heavy monsoon rains and provide protection from the intense summer sun. The roofs are often multi-tiered and feature prominent gables.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Intricate Woodwork</h3>
+                    <p>The style makes extensive use of wood for structural pillars, beams, ceilings, and decorative elements. Intricately carved gables (*mukhappu*), latticed screens (*jali*), and wooden brackets are hallmarks of this tradition.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Open Courtyards (Nalukettu)</h3>
+                    <p>Traditional homes (*tharavadu*) were often built around one or more open-to-sky courtyards (*nadumuttam*). This design, known as *Nalukettu*, ensured cross-ventilation and allowed light to enter the inner spaces, creating a cool and comfortable living environment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Palaces & Monuments</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Kerala's palaces are masterpieces of traditional wooden architecture, showcasing the exceptional skill of the region's artisans and the refined tastes of its rulers.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Padmanabhapuram Palace</h3>
+                    <p>Located just across the border in Tamil Nadu but historically the seat of Travancore rulers, this is arguably the finest surviving example of traditional Kerala architecture. The entire complex is built of wood and features carved ceilings, polished floors, and beautiful murals.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Mattancherry Palace (Dutch Palace)</h3>
+                    <p>Originally built by the Portuguese and gifted to the Raja of Kochi, this palace was later renovated by the Dutch. It is renowned for its stunning collection of murals depicting scenes from the Ramayana and other Hindu myths, considered among the finest in India.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural landscape of Kerala is a story of local adaptation and foreign influence. The charts below analyze the dominant forces that shaped its built heritage and the primary materials used in its construction.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Dominant Architectural Influences</h3>
+                    <div class="chart-container">
+                        <canvas id="influenceChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Kerala experiences two monsoon seasons. The best time to visit for exploring heritage sites is during the dry, cool winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (September - March)</h3>
+                    <p>The winter and post-monsoon period offers pleasant weather, making it ideal for sightseeing, exploring the backwaters, and visiting coastal forts.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>This is the main Southwest Monsoon season, with heavy rainfall. While the landscape is at its most beautiful, travel and outdoor activities can be restricted.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - May)</h3>
+                    <p>Summers are very hot and humid, especially in the coastal areas. It is generally less comfortable for travel and extensive sightseeing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Kerala Style</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('influenceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Local Kingdoms (Travancore, Kochi)', 'European Colonial (Portuguese, Dutch, British)'],
+                datasets: [{
+                    label: 'Influence on Major Monuments',
+                    data: [55, 45],
+                    backgroundColor: ['#000080', '#138808'], // Navy, Green
+                    borderColor: '#FEFBF3',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { callback: value => value + '%' } },
+                    x: { ticks: { color: '#374151' } } 
+                },
+                plugins: { ...chartTooltipPlugin, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Wood', 'Laterite Stone', 'Terracotta Tiles', 'Granite'],
+                datasets: [{
+                    data: [40, 35, 20, 5],
+                    backgroundColor: ['#138808', '#FF9933', '#808080', '#000080'], // Green, Saffron, Gray, Navy
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

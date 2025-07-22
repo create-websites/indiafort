@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Meghalaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+       .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+       .text-accent-saffron { color: #FF9933; }
+       .text-accent-green { color: #138808; }
+       .border-accent-saffron { border-color: #FF9933; }
+       .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Meghalaya</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Abode of Clouds & Living Architecture</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of ancient monoliths, living root bridges, and the indigenous traditions of the Khasi, Jaintia, and Garo kingdoms.</p>
+        </header>
+
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Monuments of Meghalaya</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Meghalaya's landscape is dotted with ancient monoliths and memorials that stand as powerful testaments to its tribal history, culture, and heroes, rather than traditional forts and palaces.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Nartiang Monoliths</h3>
+                    <p>Home to the largest collection of megalithic stones in a single area, this site in the Jaintia Hills is a stunning sight. The towering upright stones (*menhirs*) and flat table stones (*dolmens*) were erected to commemorate the rule and achievements of the ancient Jaintia kings.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kiang Nongbah Monument</h3>
+                    <p>Located in Jowai, this monument was erected in honor of U Kiang Nongbah, a celebrated Jaintia freedom fighter who led a rebellion against the British. It stands as a powerful symbol of the region's struggle for independence and tribal pride.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">David Scott Memorial</h3>
+                    <p>This stone monument in Cherrapunji commemorates David Scott, a British administrator from the colonial era. It marks the end of the famous David Scott Trail, a historic trekking path that connects Meghalaya to Bangladesh, reflecting the colonial history of the region.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Indigenous Architectural Styles</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The traditional architecture of Meghalaya is a masterclass in sustainable, climate-responsive design, using locally sourced materials to create structures that are perfectly adapted to the region's heavy rainfall and hilly terrain.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Living Root Bridges</h3>
+                    <p>An incredible example of bio-engineering, these bridges are not built but grown. The Khasi and Jaintia peoples have for centuries guided the roots of the Ficus elastica tree across rivers, weaving them into strong, living structures that become more robust over time.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Traditional Khasi Houses</h3>
+                    <p>Often built on stilts, these houses feature sloping thatched roofs to quickly shed heavy rain. The walls are typically made of woven bamboo plastered with mud, and the entire structure is traditionally built without the use of iron nails, relying on wooden plugs and bamboo ties.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Garo 'Nokpante'</h3>
+                    <p>The Nokpante is a traditional bachelor's dormitory found in Garo villages. This large, communal building, constructed with bamboo and thatch, serves as a center for learning and cultural education for the young, unmarried men of the community.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Royal Residences & Sacred Sites</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">While Meghalaya does not have grand stone palaces like those in Rajasthan, it has unique traditional royal residences and sacred groves that were central to the power of its tribal chieftains (*Syiems*).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Ing Sad, Smit</h3>
+                    <p>The best-preserved traditional royal residence, the Ing Sad is the home of the Priestess of the Khyrim royal family. This beautiful wooden structure with a thatched roof is built entirely without metal nails and is the center for the annual Nongkrem dance festival, a major cultural event.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Mawphlang Sacred Grove</h3>
+                    <p>An ancient forest sanctuary preserved by the Khasi community for centuries, this grove is a living monument. Considered the abode of local deities, it is a place of immense spiritual and cultural significance, protected by strict traditional laws, and represents the deep connection between nature and faith.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Meghalaya is a story of community, nature, and tradition. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Meghalaya is famous for its heavy monsoon season. The best time to visit for clear skies and comfortable exploration is during the winter and spring months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - April)</h3>
+                    <p>The winter and spring months offer the most pleasant weather, with sunny days and cool nights, making it ideal for trekking, caving, and visiting cultural sites.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (May - September)</h3>
+                    <p>This is the season of the legendary monsoons, with Cherrapunji and Mawsynram receiving some of the highest rainfall on Earth. Waterfalls are spectacular, but travel can be difficult.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Festivals</h3>
+                    <p>Plan your visit around major festivals like the Nongkrem Dance (October/November) or Shad Suk Mynsiem (April) to experience the vibrant local culture.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Indigenous Styles</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Royal Sites</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Memorial / Megalithic', data: [1], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Sacred / Ceremonial', data: [2], backgroundColor: '#138808' },   // Green
+                    { label: 'Royal / Civic', data: [3], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Defensive', data: [4], backgroundColor: '#808080' } // Gray
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [5, 6, 3, 4],
+                    backgroundColor: ['#808080', '#138808', '#FF9933', '#A7C7E7'], // Gray, Green, Saffron, Light Blue
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

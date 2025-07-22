@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Odisha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Odisha's architectural heritage. It starts with an introduction to the Kalinga school of architecture. The core sections cover: 1. The state's most significant forts. 2. A detailed look at the defining features of the Kalinga temple style. 3. A feature on the "Golden Triangle" of temples: Konark, Puri, and Bhubaneswar. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the unique temple-centric architecture of the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's history. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the distinct components of Kalinga architecture like the Deula and Jagamohana. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the overwhelming focus on religious structures in Odishan architecture. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the prevalence of local Khondalite and Sandstone. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Odisha</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">The Soul of Incredible India</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a land of ancient temples, rock-cut caves, and historic forts that define the Kalinga architectural legacy.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Odisha</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">While renowned for its temples, Odisha's strategic location also gave rise to formidable forts, built by the Gajapati kings and other rulers to defend their kingdoms against invasions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Barabati Fort, Cuttack</h3>
+                    <p>Situated on the banks of the Mahanadi river, this 13th-century fort was the capital of the Ganga dynasty. It is known for its magnificent nine-storied palace (now in ruins) and a grand gateway flanked by large earthen ramparts and a wide moat, showcasing the strength of Odishan military architecture.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Raibania Fort</h3>
+                    <p>Considered the largest medieval fort of eastern India, Raibania is a complex of forts built during the Gajapati rule. Its vast, sprawling ruins, hidden within forests, speak to the immense scale of its construction and its importance in guarding the kingdom's northern frontiers.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Kalinga Temple Architecture</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Odisha is the home of the Kalinga school of architecture, a distinct sub-style of the Nagara tradition. It is characterized by a unique vocabulary of structures and a profusion of intricate stone carving.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Deula (Sanctum Tower)</h3>
+                    <p>The main sanctum of the temple, which houses the deity. It features a tall, curvilinear tower, similar to the Nagara *shikhara*, and is lavishly carved with decorative motifs and figures. This is the most sacred part of the temple.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jagamohana (Assembly Hall)</h3>
+                    <p>The assembly hall or porch located directly in front of the main *deula*. It typically has a pyramidal roof made of horizontal platforms (*pidhas*). This is where devotees gather for worship and to view the deity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">The Golden Triangle of Temples</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Three of India's most significant religious and architectural sites form a "Golden Triangle" in Odisha, attracting pilgrims and tourists from around the world.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Konark Sun Temple</h3>
+                    <p>A UNESCO World Heritage site, this 13th-century temple is a monumental representation of the Sun God Surya's chariot. Its 24 intricately carved stone wheels are a marvel of artistic genius and engineering, making it one of the most sublime monuments in India.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jagannath Temple, Puri</h3>
+                    <p>One of the most revered pilgrimage sites in Hinduism, this massive temple complex is dedicated to Lord Jagannath. Its towering *deula*, rising over 65 meters, dominates the skyline of Puri. The temple is famous for its annual Ratha Yatra (chariot festival).</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Lingaraj Temple, Bhubaneswar</h3>
+                    <p>Dedicated to Lord Shiva, this 11th-century temple is the largest in Bhubaneswar, the "Temple City of India." It is a quintessential example of the Kalinga style, with its 55-meter high main tower and a sprawling complex of smaller shrines.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural landscape of Odisha is overwhelmingly defined by its religious structures. The charts below analyze the purpose of its major monuments and the primary materials used by its master builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Odisha has a tropical climate with hot summers and a significant monsoon season. The best time to visit its temples and beaches is during the cool, dry winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer the most pleasant weather, with mild temperatures and clear skies, making it perfect for exploring Konark, Puri, and Bhubaneswar.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The state receives heavy rainfall during the monsoon, which can disrupt travel plans, especially in coastal areas. The landscape, however, is lush and beautiful.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - May)</h3>
+                    <p>Summers are extremely hot and humid, particularly on the coast. It is generally advisable to avoid this period for extensive outdoor sightseeing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Kalinga Style</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Religious (Temples, Stupas)', data: [85], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Defensive (Forts)', data: [10], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Civic/Royal', data: [5], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Sandstone', 'Khondalite Stone', 'Laterite Stone', 'Brick & Stucco'],
+                datasets: [{
+                    data: [50, 30, 15, 5],
+                    backgroundColor: ['#FF9933', '#000080', '#808080', '#138808'], // Saffron, Navy, Gray, Green
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

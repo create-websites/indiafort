@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Uttar Pradesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Uttar Pradesh's architectural heritage, centering on its role as the heart of the Mughal Empire. The core sections cover: 1. The state's monumental forts, particularly Agra Fort. 2. A detailed look at its world-famous monuments, including the Taj Mahal and Sarnath. 3. A feature on the unique planned city of Fatehpur Sikri and the Nawabi style of Lucknow. 4. Data visualizations analyzing the purpose and materials of the region's structures. 5. A practical "When to Visit" guide. This structure is designed to showcase the imperial and religious architecture that defines the state. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of the primary Mughal fortress. -> Method: HTML/CSS). 2. Key Monuments (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the global significance of sites like the Taj Mahal. -> Method: HTML/CSS). 3. Architectural Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the dominance of imperial and funerary structures in the Mughal heartland. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the iconic Mughal combination of red sandstone and white marble. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Uttar Pradesh</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">The Imperial Heartland</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Discover the epicenter of Mughal grandeur, home to the Taj Mahal and a legacy of art and power that defined an era.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Uttar Pradesh</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Uttar Pradesh were the epicenters of Mughal power, vast walled cities from which emperors ruled the subcontinent.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Agra Fort</h3>
+                    <p>A UNESCO World Heritage site, this massive red sandstone fortress was the main residence of the Mughal emperors until they shifted their capital to Delhi. Rebuilt by Emperor Akbar, it contains a stunning array of palaces, audience halls, and mosques, representing the evolution of Mughal architecture from Akbar to Shah Jahan.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jhansi Fort</h3>
+                    <p>This formidable hilltop fortress is a powerful symbol of Indian resistance, famously associated with Rani Lakshmibai during the 1857 uprising. Built by the Bundela Rajputs and later expanded, its strategic location and strong fortifications made it a key military stronghold in the Bundelkhand region.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">World-Famous Monuments</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Uttar Pradesh is home to some of the most recognized and revered monuments in the world, showcasing the pinnacle of Mughal artistry and the ancient roots of Buddhism.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Taj Mahal, Agra</h3>
+                    <p>The "jewel of Muslim art in India," this ivory-white marble mausoleum is a UNESCO World Heritage site and one of the New Seven Wonders of the World. Commissioned by Shah Jahan for his wife Mumtaz Mahal, its perfect symmetry, exquisite pietra dura inlay, and ethereal beauty make it a universal symbol of love.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Dhamek Stupa, Sarnath</h3>
+                    <p>This massive stupa marks the spot where the Buddha is believed to have delivered his first sermon after attaining enlightenment. Originally built by Emperor Ashoka in the 3rd century BCE and later rebuilt, it is one of the most important pilgrimage sites for Buddhists worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Imperial Cities & Palaces</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The state's architectural heritage is defined by grand imperial projects and the unique cultural fusion of its later kingdoms.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Fatehpur Sikri</h3>
+                    <p>The magnificent fortified city built by Emperor Akbar in the 16th century served as the Mughal capital for a brief period. Now a UNESCO World Heritage site, this "City of Victory" is a masterpiece of planning and a unique blend of Mughal, Persian, and indigenous architectural styles, reflecting Akbar's syncretic vision.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bara Imambara, Lucknow</h3>
+                    <p>A prime example of Nawabi architecture, this colossal shrine was built in the 18th century. It is famed for its incredible central arched hall—one of the largest in the world—constructed without any beams or pillars. It also features the Bhulbhulaiya, a fascinating labyrinth of interconnected passages.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Uttar Pradesh is overwhelmingly a story of Mughal imperial ambition. The charts below analyze the functional purpose of its major monuments and the signature materials used to build them.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Uttar Pradesh experiences a climate of extremes. The best time to visit its world-famous monuments is during the cool and pleasant winter months.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter season offers ideal weather for sightseeing in Agra, Lucknow, and Varanasi, with cool days and sunny skies.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings heavy rain and high humidity, which can make travel and exploring outdoor sites difficult.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>Summers are extremely hot and dry, with temperatures often reaching severe levels. This period is challenging for any form of tourism.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Cities & Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Imperial (Forts, Palaces)', data: [55], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Funerary (Tombs)', data: [30], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Religious', data: [15], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Red Sandstone', 'White Marble', 'Brick & Stucco', 'Other Stone'],
+                datasets: [{
+                    data: [50, 35, 10, 5],
+                    backgroundColor: ['#FF9933', '#FFFFFF', '#138808', '#808080'], // Saffron, White, Green, Gray
+                    borderColor: '#374151',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

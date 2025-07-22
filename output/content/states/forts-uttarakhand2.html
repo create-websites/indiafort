@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Uttarakhand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+     .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+     .text-accent-saffron { color: #FF9933; }
+     .text-accent-green { color: #138808; }
+     .border-accent-saffron { border-color: #FF9933; }
+     .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Uttarakhand</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Gods and Forts</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a heritage of ancient Himalayan forts, unique temple architecture, and the grand summer retreats of the British Raj.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Uttarakhand</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The forts of Uttarakhand are dramatic citadels perched on strategic hilltops, built by powerful dynasties like the Chands and Gorkhas to command the Himalayan valleys and defend their ancient kingdoms. [7]</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Pithoragarh Fort</h3>
+                    <p>Built by the Gorkhas in 1789, this imposing stone fort is located on a hilltop on the outskirts of Pithoragarh town. It is a prime example of Gorkha military architecture and offers breathtaking panoramic views of the surrounding valleys and snow-clad peaks. [8, 9]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Banasur ka Kila</h3>
+                    <p>Located in the Champawat district, this medieval fort is steeped in mythology. It is named after the demon king Banasur, who was defeated by Lord Krishna. The ruins of the fort stand as a testament to the region's ancient past and offer spectacular views of the Himalayas. [9, 10]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chandpur Fort</h3>
+                    <p>One of the most significant historical sites in the Garhwal region, this fort was the capital of the Parmar dynasty. The ruins, including walls and dwelling houses, are a powerful reminder of the 52 Garhs (forts) that once dotted the landscape before being unified. [7, 11]</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Temples & Ancient Sites</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Known as "Devbhumi" or the Land of the Gods, Uttarakhand's spiritual landscape is defined by its unique temple architecture, which has adapted to the mountainous climate, and its ancient pilgrimage sites.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Katarmal Sun Temple</h3>
+                    <p>Located near Almora, this 9th-century temple complex was built by the Katyuri kings. Dedicated to the Sun God, it is the second most important sun temple in India after Konark. The main temple is surrounded by 45 smaller shrines, showcasing intricate stone and wood carvings. [9, 12]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Jageshwar Temple Complex</h3>
+                    <p>A group of over 100 ancient Hindu temples dating between the 7th and 12th centuries, Jageshwar is a major pilgrimage site. The temples, built by the Katyuri kings, are constructed in the Nagara style of architecture and are nestled in a serene deodar forest. [11, 13]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palaces of Royalty & The Raj</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The palaces of Uttarakhand range from the grand summer residences of the British Viceroys to the elegant homes of local rulers, showcasing a blend of European and Indian architectural styles.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Malla Mahal, Almora</h3>
+                    <p>Built by the Chand dynasty in the 17th century, Malla Mahal served as the royal residence of the Kumaon kings. This stone and wood palace is a fine example of the local Nagar style of architecture and was later used as a seat of power by the Gurkhas and the British. [8, 14]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">The Viceregal Palace, Narendra Nagar</h3>
+                    <p>The former palace of the Maharaja of Tehri Garhwal, this magnificent building played host to India's Viceroys and heads of state. Now a luxury spa, its restored interiors, grand tea lounge, and the oldest billiards table in India offer a glimpse into the opulent lifestyle of the Garhwal Kingdom. [15, 16]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Uttarakhand is a story of defense, devotion, and regional adaptation. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Uttarakhand is a year-round destination, but the best time to visit depends on your interests, whether it's enjoying pleasant summer weather, seeing autumn colors, or experiencing snowfall.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (March - June)</h3>
+                    <p>The summer months offer pleasant weather, making it ideal for trekking, sightseeing, and visiting the state's forts and palaces without the extreme cold. [17]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (July - September)</h3>
+                    <p>The monsoon brings lush greenery but also the risk of landslides, which can disrupt travel. It's a beautiful but cautious time to visit. [17]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Winter Season (October - February)</h3>
+                    <p>This period is perfect for snow lovers and those wanting to experience a Himalayan winter. It's also a great time for wildlife viewing in the national parks. [17]</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets:, backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Religious (Temples/Sites)', data: [2], backgroundColor: '#138808' },   // Green
+                    { label: 'Royal / Colonial (Palaces)', data: [3], backgroundColor: '#FF9933' } // Saffron
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [4, 5, 6],
+                    backgroundColor: ['#808080', '#138808', '#FF9933'], // Gray, Green, Saffron
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

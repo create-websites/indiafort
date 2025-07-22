@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Mizoram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+      .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+      .text-accent-saffron { color: #FF9933; }
+      .text-accent-green { color: #138808; }
+      .border-accent-saffron { border-color: #FF9933; }
+      .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Mizoram</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Highlanders & Ancient Traditions</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of ancient megaliths, ingenious bamboo architecture, and sacred sites that tell the story of the Mizo people.</p>
+        </header>
+
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Monuments of Memory: The Mizo Megaliths</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Mizoram's most significant historical monuments are not forts or palaces, but ancient megalithic sites featuring carved memorial stones, or *menhirs*, that stand as a testament to the region's pre-Christian history and culture.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kawtchhuah Ropui, Vangchhia</h3>
+                    <p>Known as the "Great Entranceway," this is Mizoram's first site to be declared a Monument of National Importance. It features over 170 intricately carved menhirs depicting warriors, hunters, and cultural motifs, offering a profound insight into the life and legends of the ancient Mizo people. [6, 7]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Lianpui Menhirs (Lungphun Ropui)</h3>
+                    <p>Located near the Myanmar border, this recently protected national monument is a collection of 114 carved memorial stones. The detailed carvings of human figures, animals, and cultural symbols reflect the traditions of the Mizo before the advent of Christianity, with the largest stone standing nearly two meters tall. [6]</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Indigenous Mizo Architecture</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Traditional Mizo architecture is a remarkable example of sustainable design, perfectly adapted to the hilly terrain and monsoon climate. It relies on local materials like bamboo and wood to create functional and resilient structures.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Houses on Stilts</h3>
+                    <p>A typical Mizo village consists of bamboo huts built on stilts. This elevated design protects the houses from heavy rainfall and flooding on the sloping hillsides, while also providing a space for livestock underneath. [8, 9, 10]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">The Zawlbuk</h3>
+                    <p>A unique and central feature of every traditional village was the *Zawlbuk*, or bachelors' dormitory. This large, hump-roofed communal house, built of timber and bamboo, was where all the young men of the village slept and were trained in social and cultural responsibilities. [8, 9, 10]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bamboo & Thatch Construction</h3>
+                    <p>Mizo houses traditionally used a rectangular layout with walls made of woven bamboo and a thatched roof made from the leaves of the Di plant. This construction provided excellent insulation and noise reduction, perfectly suited to the environment. [9, 10]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sites" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Sacred Sites & Legendary Caves</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">The landscape of Mizoram is rich with sites of cultural and legendary importance, including caves that hold stories of ancient heroes and graves that symbolize eternal love.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Pukzing Cave</h3>
+                    <p>The largest cave in Mizoram, Pukzing is said to have been carved out by a legendary strongman named Mualzavata. This impressive 25-meter-long cave stands as a testament to the rich folklore and oral traditions of the Mizo people. [11, 12]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Phulpui Grave</h3>
+                    <p>A symbol of love and sacrifice, this site contains two graves associated with the tragic love story of Zawlpala, the chief of Phulpui village, and the beautiful Talvungi. It is a place of great cultural significance, often compared to the Taj Mahal in its romantic legend. [13]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Mizoram is a story of community, tradition, and adaptation to nature. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Mizoram enjoys a pleasant, temperate climate for most of the year. The best time to visit is during the winter months when the weather is cool and dry.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The winter months offer the most pleasant weather, with cool days and clear skies, making it ideal for exploring the state's natural beauty and cultural sites.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The monsoon brings significant rainfall to the region. While the landscape is incredibly lush, travel can be challenging due to wet conditions.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Festivals</h3>
+                    <p>Plan your visit around major festivals like Chapchar Kut (March) to experience the vibrant traditional dances, music, and culture of the Mizo people.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Indigenous Styles</a>
+                <a href="#sites" class="text-gray-600 hover:text-accent-saffron transition-colors">Sacred Sites</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets:, backgroundColor: '#138808' },   // Green
+                    { label: 'Memorial / Megalithic', data: [2], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Civic / Communal', data: [3], backgroundColor: '#FF9933' } // Saffron
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [4, 5, 3],
+                    backgroundColor: ['#138808', '#FF9933', '#808080'], // Green, Saffron, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

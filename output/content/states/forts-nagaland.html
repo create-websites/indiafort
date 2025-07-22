@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Nagaland</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4,.stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+      .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+      .text-accent-saffron { color: #FF9933; }
+      .text-accent-green { color: #138808; }
+      .border-accent-saffron { border-color: #FF9933; }
+      .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Nagaland</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Warriors & Ancient Traditions</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Explore a unique heritage of ancient ruins, poignant war memorials, and the vibrant indigenous architecture of the Naga tribes.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Ancient Ruins & Fortified Villages</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Nagaland's history is marked by the ancient Kachari Kingdom and the fiercely independent Naga tribes, whose defensive structures were ingeniously integrated into the landscape.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Kachari Ruins, Dimapur</h3>
+                    <p>These enigmatic ruins are the most significant remnants of the Kachari Kingdom, which flourished before the 13th century. The site is famous for its series of unique, mushroom-domed sandstone pillars, whose exact purpose remains a mystery. These monoliths stand as a testament to a once-powerful civilization. [7, 8, 9, 10, 11, 12, 13]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Khonoma Village Fortifications</h3>
+                    <p>The historic village of Khonoma, home to the Angami Naga tribe, is renowned for its brave resistance against the British. The village itself is a natural fortress, with strong stone walls and strategic gates. The presence of a fort called 'Kuda' (a place of defense) is a unique feature that highlights the martial traditions of the Naga people. [14, 15, 16]</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="monuments" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Monuments of Sacrifice & Memory</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The landscape of Nagaland is home to one of the most significant memorials of World War II, a site of profound historical importance and solemn remembrance.</p>
+            <div class="max-w-4xl mx-auto bg-card p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-center">Kohima War Cemetery</h3>
+                <p>This immaculately maintained cemetery commemorates the soldiers who died during the Battle of Kohima in 1944, a turning point in World War II. It contains 1,420 Commonwealth burials and a memorial to 917 Hindu and Sikh soldiers. The cemetery is famous for its poignant epitaph: "When you go home, tell them of us and say: For your tomorrow, we gave our today." [14, 16, 17, 18, 19, 20, 21, 22]</p>
+            </div>
+        </section>
+
+        <section id="styles" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Indigenous Naga Architecture</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Traditional Naga architecture is a powerful expression of cultural identity, built using organic materials and adorned with intricate carvings that symbolize status, valor, and community.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">The Morung</h3>
+                    <p>A central feature of Naga villages, the *Morung* is a communal house or bachelors' dormitory. These grand structures, built with wood and bamboo, served as centers for learning, governance, and training young warriors, and were often elaborately decorated with symbolic carvings. [23, 24, 25]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Symbolic Carvings</h3>
+                    <p>Naga houses are adorned with intricate wood carvings that signify the owner's social status and achievements. Common motifs include the heads of the mithun (Indian bison), tigers, and hornbills, which represent wealth, strength, and valor. Human heads symbolized success in head-hunting. [26]</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Natural Materials</h3>
+                    <p>Naga architecture makes extensive use of locally sourced materials like wood, bamboo, and thatch. Houses are typically built on hilltops or slopes for defense, with steeply sloped roofs to shed heavy monsoon rain. This sustainable approach creates structures that are perfectly integrated with the environment. [23, 27, 28]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Architectural Insights</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architecture of Nagaland is a story of its warrior culture, community life, and deep-rooted traditions. The charts below analyze the functional purpose of its major monuments and the primary materials used by its builders.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Nagaland has a pleasant climate for most of the year. The best time to visit is during the winter months, which coincide with the state's most famous cultural festival.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - May)</h3>
+                    <p>The winter and spring months offer cool, dry weather, making it ideal for exploring the state's villages, trekking, and experiencing its vibrant culture. [29]</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The monsoon brings heavy rainfall, which can make travel to remote areas challenging. However, the landscape is at its most lush and green during this time.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Hornbill Festival (December)</h3>
+                    <p>Plan your visit in the first week of December to witness the spectacular Hornbill Festival at the Naga Heritage Village, Kisama. This is the best time to see the rich cultural diversity of all the Naga tribes in one place. [16]</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Forts & Ruins</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Naga Style</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems;
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets:, backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Memorial (War & Megalithic)', data: [2], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Religious / Ceremonial', data: [3], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: {...chartTooltipPlugin, legend: {...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels:,
+                datasets: [{
+                    data: [4, 5, 6],
+                    backgroundColor: ['#138808', '#808080', '#FF9933'], // Green, Gray, Saffron
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Karnataka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Karnataka's architectural heritage. It starts with an introduction to its major dynasties. The core sections cover: 1. The state's most significant and diverse forts. 2. A detailed look at the defining architectural styles, particularly Hoysala and Vijayanagara. 3. A feature on the UNESCO World Heritage sites of Hampi and Pattadakal. 4. Data visualizations analyzing the dominant styles and materials used. 5. A practical "When to Visit" guide. This structure is designed to guide the user through the chronological and stylistic evolution of Karnataka's monuments. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's unique characteristics. -> Method: HTML/CSS). 2. Architectural Styles (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining complex stylistic details like the star-shaped platforms of Hoysala architecture. -> Method: HTML/CSS). 3. Dominant Styles (Historical Data -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively compares the prevalence and influence of different architectural traditions in the region. -> Library: Chart.js). 4. Building Materials (Composition Data -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the material choices of different dynasties, especially the Hoysala's use of soapstone. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Karnataka</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Cradle of Stone Architecture</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">From rock-cut caves to intricate temples and formidable forts, discover a land of unparalleled architectural diversity.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Karnataka</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Karnataka's forts are a testament to its turbulent and glorious past, showcasing ingenious defensive strategies from multiple dynasties, including the Chalukyas, Rashtrakutas, Vijayanagara rulers, and the Deccan Sultanates.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chitradurga Fort</h3>
+                    <p>A marvel of military engineering, this fort features seven concentric defensive walls, numerous gateways, and secret passages. Its rugged, boulder-strewn landscape was cleverly integrated into its design, making it nearly impregnable.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Bidar Fort</h3>
+                    <p>A prime example of Deccan Sultanate architecture, this fort is renowned for its Persian influences and innovative 'Karez' underground water supply system. Its massive walls enclose palaces, mosques, and gardens, showcasing a blend of Islamic and Indian styles.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Badami Fort</h3>
+                    <p>Perched on a cliff above the famous Badami cave temples, this fort was the capital of the early Chalukyas. It offers stunning views and contains granaries, temples, and defensive structures dating back to the 6th century.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Karnataka's Signature Styles</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Karnataka is the birthplace of several distinct architectural traditions. The intricate soapstone carvings of the Hoysalas and the grand, composite structures of the Vijayanagara Empire are among the most celebrated.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Chalukyan Experimentation</h3>
+                    <p>Pioneers of structural temple architecture, the Chalukyas developed styles that would influence the entire Deccan. Their temples at Aihole, Badami, and Pattadakal show an evolution from rock-cut shrines to sophisticated freestanding structures.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Hoysala Intricacy</h3>
+                    <p>The Hoysalas perfected a unique style using soft soapstone, which allowed for incredibly detailed carvings. Key features include star-shaped platforms, lathe-turned pillars, and ceilings covered in mythological figures.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Vijayanagara Grandeur</h3>
+                    <p>The architecture of the Vijayanagara Empire is known for its grand scale and synthesis of earlier styles. Hallmarks include ornate pillared halls (*mandapas*), tall gateway towers (*raya gopurams*), and sprawling temple complexes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="unesco" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">UNESCO World Heritage Sites</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Karnataka is home to some of India's most spectacular archaeological sites, recognized globally for their "Outstanding Universal Value."</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Group of Monuments at Hampi</h3>
+                    <p>The former capital of the Vijayanagara Empire is a vast, otherworldly landscape of ruins. It includes the iconic Stone Chariot, the Virupaksha Temple, royal enclosures, and over 1,600 surviving remains of a once-great metropolis.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Group of Monuments at Pattadakal</h3>
+                    <p>A harmonious blend of architectural forms from northern and southern India. This site represents the zenith of Chalukyan art, with a series of nine Hindu temples and a Jain sanctuary built in the 7th and 8th centuries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">A Study in Stone</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural story of Karnataka is one of dynastic ambition and artistic innovation. The charts below illustrate the dominant styles that shaped the region and the specific materials they mastered.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Dominant Architectural Styles</h3>
+                    <div class="chart-container">
+                        <canvas id="stylesChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Karnataka's diverse geography, from the coastal plains to the Deccan plateau, means its climate varies significantly. Planning your trip for the right season is essential.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The best time for travel. The weather is cool and pleasant throughout the state, perfect for exploring Hampi's ruins or the palaces of Mysuru.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The state receives heavy rainfall, especially in the Western Ghats. Ideal for seeing waterfalls and the lush green landscapes of Coorg, but less so for exploring open-air ruins.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - May)</h3>
+                    <p>Summer is hot and dry, especially in the northern parts of the state where Hampi and Bidar are located. Sightseeing can be strenuous due to the heat.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Architectural Styles</a>
+                <a href="#unesco" class="text-gray-600 hover:text-accent-saffron transition-colors">UNESCO Sites</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('stylesChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Vijayanagara', 'Hoysala', 'Chalukya', 'Deccan Sultanate', 'Other'],
+                datasets: [{
+                    label: 'Influence on Major Monuments',
+                    data: [40, 25, 20, 10, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080', '#A7C7E7'], // Navy, Green, Saffron, Gray, Light Blue
+                    borderColor: '#FEFBF3',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { callback: value => value + '%' } },
+                    x: { ticks: { color: '#374151' } } 
+                },
+                plugins: { ...chartTooltipPlugin, legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Granite (Vijayanagara)', 'Soapstone (Hoysala)', 'Sandstone (Chalukya)', 'Laterite & Trap Rock'],
+                datasets: [{
+                    data: [45, 30, 15, 10],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080'], // Navy, Green, Saffron, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

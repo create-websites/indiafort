@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Rajasthan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: The report is designed as a single-page deep-dive into Rajasthan's architecture. It begins with a bold header, followed by an interactive section on the six UNESCO Hill Forts. It then expands to other major forts and a dedicated section on the region's famous palaces. A data visualization section uses charts to analyze Rajput architectural DNA. The report concludes with practical travel advice ("When to Visit") and a navigational footer. This structure provides a comprehensive yet easy-to-navigate overview tailored specifically to Rajasthan. -->
+    <!-- Visualization & Content Choices: 1. Hill Forts (Key Sites -> Goal: Organize -> Viz: Interactive HTML cards -> Interaction: Click to reveal details -> Justification: Allows users to explore the six UNESCO sites individually without cluttering the page. -> Method: HTML/CSS/JS). 2. Architectural DNA (Feature Analysis -> Goal: Compare/Inform -> Viz: Bar Chart and Donut Chart -> Justification: The bar chart effectively compares the functional purpose (Defense vs. Residence), while the donut chart shows the composition of key aesthetic elements. -> Library: Chart.js). 3. When to Visit (Practical Info -> Goal: Inform -> Viz: Styled HTML section -> Justification: A simple, clear text layout is most effective for conveying travel advice. -> Method: HTML/CSS). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .fort-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Rajasthan</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">The Land of Kings & Forts</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">An interactive exploration of the forts, palaces, and monuments that define India's most regal state.</p>
+        </header>
+
+        <section id="hillforts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Great Hill Forts of Rajasthan</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Six majestic forts, collectively a UNESCO World Heritage Site, represent the pinnacle of Rajput military architecture. These were not mere garrisons, but fortified cities encompassing palaces, temples, and entire communities, demonstrating a unique mastery of landscape and defense.</p>
+            <div id="hillforts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+        
+        <section id="otherforts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Beyond the Hills: Other Major Forts</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Beyond the famous six, Rajasthan is studded with other formidable bastions, each with its own unique history and architectural character.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2">Mehrangarh Fort, Jodhpur</h3>
+                    <p>Dominating the skyline from a 125-meter high cliff, Mehrangarh is one of India's largest and best-preserved forts. Founded in the 15th century, its massive walls protect a complex of exquisite palaces, courtyards, and a museum showcasing royal artifacts.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2">Junagarh Fort, Bikaner</h3>
+                    <p>Unlike other major Rajasthani forts, Junagarh is built on the plains. Its formidable defenses were never breached. Constructed in the late 16th century, it is a stunning composite structure of palaces, temples, and pavilions in red sandstone and marble.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="palaces" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Palatial Splendor & Courtly Life</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">Within the rugged forts and bustling cities lie palaces of breathtaking beauty. These were the centers of royal life, showcasing opulent decoration, innovative design, and a blend of Rajput and Mughal aesthetics.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">City Palace, Jaipur</h3>
+                    <p>The heart of the "Pink City," this sprawling complex features a sequence of courtyards, gardens, and buildings. It blends Rajasthani and Mughal styles and still serves as the residence for the former royal family.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Hawa Mahal, Jaipur</h3>
+                    <p>The iconic "Palace of Winds" is not a palace but an ornate facade. Its 953 windows (*jharokhas*) allowed royal women to observe street life in privacy, a masterpiece of both design and social function.</p>
+                </div>
+                 <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">City Palace, Udaipur</h3>
+                    <p>Perched on the banks of Lake Pichola, this is Rajasthan's largest palace complex. Built over 400 years, it's a stunning fusion of towers, domes, and arches, offering panoramic views of the lake and city.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Architectural DNA of Rajasthan</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Rajput architecture is a unique language of power, resilience, and artistry. The charts below break down the core functions and signature elements that define this remarkable style.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Key Architectural Features</h3>
+                    <div class="chart-container">
+                        <canvas id="featuresChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Rajasthan's climate is one of extremes. Planning your visit for the right season is crucial for a comfortable and enjoyable experience exploring its magnificent heritage.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The ideal time to visit. The weather is cool and pleasant, perfect for sightseeing. This is the busiest tourist season, so book travel and accommodation in advance.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Shoulder Season (July - September)</h3>
+                    <p>The monsoon season brings relief from the heat and transforms the landscape into a lush green. A good time for budget travel, though some rural roads may be affected.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - June)</h3>
+                    <p>The summer months are extremely hot, with temperatures often exceeding 45°C (113°F). Recommended only for those who can tolerate intense heat. Best deals available.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#hillforts" class="text-gray-600 hover:text-accent-saffron transition-colors">Hill Forts</a>
+                <a href="#palaces" class="text-gray-600 hover:text-accent-saffron transition-colors">Palaces</a>
+                <a href="#analysis" class="text-gray-600 hover:text-accent-saffron transition-colors">Analysis</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hillFortsData = [
+            { name: "Chittorgarh Fort", detail: "The largest fort in India, it embodies the spirit of Rajput pride and sacrifice. It sprawls over a hill and houses numerous palaces, temples, and victory towers." },
+            { name: "Kumbhalgarh Fort", detail: "Known for its massive defensive wall, second only to the Great Wall of China. This fort on the Aravalli Hills has seven fortified gateways." },
+            { name: "Ranthambore Fort", detail: "A formidable forest fort, now part of a major national park. It's a unique blend of nature and architecture, with temples and pavilions scattered within." },
+            { name: "Jaisalmer Fort", detail: "The 'Golden Fort' is a living citadel, with a significant portion of the city's population residing within its yellow sandstone walls." },
+            { name: "Amer (Amber) Fort", detail: "A stunning blend of Rajput and Mughal styles, this fort-palace is known for its artistic elements, including the magnificent Sheesh Mahal (Hall of Mirrors)." },
+            { name: "Gagron Fort", detail: "A rare example of a 'Jal Durg' or water fort, surrounded by rivers on three sides. It is a testament to strategic defensive planning." }
+        ];
+
+        const hillfortsGrid = document.getElementById('hillforts-grid');
+        hillFortsData.forEach(fort => {
+            const card = document.createElement('div');
+            card.className = 'fort-card bg-card p-6 rounded-xl shadow-lg cursor-pointer';
+            card.innerHTML = `
+                <h3 class="text-xl font-bold mb-2">${fort.name}</h3>
+                <p class="text-gray-600">${fort.detail}</p>
+            `;
+            hillfortsGrid.appendChild(card);
+        });
+
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Defense', data: [65], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Residence', data: [25], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Religion', data: [10], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('featuresChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Jharokhas (Balconies)', 'Chhatris (Pavilions)', 'Courtyards', 'Stepwells (Baolis)'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#FF9933', '#138808', '#000080', '#808080'], // Saffron, Green, Navy, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>

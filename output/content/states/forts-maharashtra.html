@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Report: The Architecture of Maharashtra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pride of India -->
+    <!-- Application Structure Plan: This report provides a focused exploration of Maharashtra's architectural heritage. It starts with an introduction to the Maratha Empire. The core sections cover: 1. The state's formidable hill and sea forts. 2. A detailed look at the defining features of Maratha architecture, including the 'Wada' style. 3. A feature on key palaces and monuments like Shaniwar Wada. 4. Data visualizations analyzing the purpose and materials of Maratha structures. 5. A practical "When to Visit" guide. This structure is designed to highlight the unique military and civic architecture of the region. -->
+    <!-- Visualization & Content Choices: 1. Key Forts (Major Sites -> Goal: Organize -> Viz: HTML cards -> Justification: Provides a clear, digestible overview of each fort's strategic importance. -> Method: HTML/CSS). 2. Architectural Style (Concepts -> Goal: Inform -> Viz: Styled HTML sections -> Justification: Best for explaining the functional and defensive characteristics of Maratha design. -> Method: HTML/CSS). 3. Structure Purpose (Analysis -> Goal: Compare -> Viz: Bar Chart -> Justification: Effectively visualizes the overwhelming focus on defensive structures in Maratha architecture. -> Library: Chart.js). 4. Building Materials (Composition -> Goal: Inform -> Viz: Donut Chart -> Justification: Clearly shows the reliance on local, durable stone like basalt and laterite. -> Library: Chart.js). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FEFBF3; /* A very light cream/off-white */
+            color: #374151; /* Gray-700 for text */
+        }
+        h1, h2, h3, h4, .stat-text {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            color: #000080; /* Navy Blue */
+        }
+        .bg-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB; /* Gray-200 border */
+        }
+        .text-accent-saffron { color: #FF9933; }
+        .text-accent-green { color: #138808; }
+        .border-accent-saffron { border-color: #FF9933; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        /* Offset for anchor links */
+        section[id] {
+            scroll-margin-top: 4rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-accent-saffron tracking-wider">Maharashtra</h1>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-wide">Land of Warrior Forts</h2>
+            <p class="mt-4 text-lg max-w-3xl mx-auto">Discover the legacy of the Maratha Empire, etched into the rugged mountains and strategic coastlines of the Deccan.</p>
+        </header>
+
+        <section id="forts" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">The Forts of Maharashtra</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Maharashtra's landscape is dominated by a network of over 350 forts, the most of any state in India. These were the heart of the Maratha Empire's military strategy, mastering the terrain to create some of the most formidable defensive structures in the world.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Daulatabad Fort</h3>
+                    <p>Originally the 12th-century fortress of Devagiri, this is an architectural marvel of defense. Built on a 200-meter high conical hill, its features include multiple concentric walls, a deep moat, and a single, spiraling access tunnel designed to confuse and trap invaders.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Murud-Janjira</h3>
+                    <p>A testament to naval engineering, this unconquered sea fort (*Jal Durg*) stands on an island off the coast. Built in the 17th century, its 40-foot high walls have withstood Dutch, British, and Maratha attacks, protecting its freshwater lakes, palace, and cannons.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Panhala Fort</h3>
+                    <p>One of the largest forts in the Deccan, Panhala has a long and storied history, most famously associated with Shivaji Maharaj. Its vast perimeter of over 7 km is protected by strong fortifications, bastions, and three magnificent double-walled gateways.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="styles" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Maratha Architectural Style</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Maratha architecture is defined by its pragmatism, simplicity, and emphasis on defense. Unlike the ornate styles of the Mughals or Rajputs, Maratha structures prioritized functionality and strength, using local materials to create durable and efficient buildings.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Defensive Focus</h3>
+                    <p>The primary characteristic is fortification. Even residential palaces (*Wadas*) were heavily fortified. Features include high walls, narrow entrances, strong bastions, and secret escape routes, reflecting a state of constant military preparedness.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Use of Local Materials</h3>
+                    <p>Maratha builders masterfully used locally available resources. The dark, hard basalt rock of the Deccan Traps was used for foundations and walls, while wood from the Western Ghats was used extensively for pillars, ceilings, and intricate brackets.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">The 'Wada' Style</h3>
+                    <p>The *Wada* is the traditional Maratha mansion, typically featuring open courtyards, extensive woodwork, and a blend of public and private spaces. These structures served as the administrative and residential hubs for Maratha nobility.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="monuments" class="my-20">
+             <h2 class="text-4xl font-bold text-center mb-8">Key Palaces & Monuments</h2>
+             <p class="text-center max-w-3xl mx-auto mb-12">While famed for its forts, Maharashtra also possesses significant palaces and monuments that served as centers of political power and cultural life.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Shaniwar Wada, Pune</h3>
+                    <p>Built in 1732, this was the grand seat of the Peshwas, the prime ministers of the Maratha Empire. Though a fire destroyed much of the original seven-storied palace, its massive fortified walls, grand gateways, and foundations remain as a powerful symbol of Peshwa authority.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Aga Khan Palace, Pune</h3>
+                    <p>Built in 1892, this palace has a significant place in India's freedom struggle. It served as a prison for Mahatma Gandhi, his wife Kasturba Gandhi, and other freedom fighters during the Quit India Movement. It is now a monument to their memory.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Built for Purpose</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">The architectural priorities of the Marathas are clearly reflected in what they built and the materials they used. The charts below analyze the functional focus and material choices that define Maharashtra's built heritage.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Purpose of Structures</h3>
+                    <div class="chart-container">
+                        <canvas id="purposeChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Primary Building Materials</h3>
+                    <div class="chart-container">
+                        <canvas id="materialsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="visit" class="my-20">
+            <h2 class="text-4xl font-bold text-center mb-8">When to Visit</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">Maharashtra's climate varies from the coast to the interior plateau. The monsoon season, while beautiful, can make trekking to hill forts challenging.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-green mb-2">Peak Season (October - March)</h3>
+                    <p>The best time for visiting forts and cities. The weather is cool and dry, providing ideal conditions for sightseeing and trekking up to the hill forts.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-500 mb-2">Monsoon Season (June - September)</h3>
+                    <p>The landscape becomes incredibly lush and green, and waterfalls are at their peak. It's a popular time for local trekkers, but paths can be slippery and dangerous.</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-accent-saffron mb-2">Off-Season (April - May)</h3>
+                    <p>Summer is very hot and humid, especially on the coast and in cities like Pune and Mumbai. Exploring forts during the day can be extremely taxing.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer class="bg-white mt-16 border-t border-gray-200">
+        <div class="container mx-auto py-8 px-4 text-center">
+            <div class="flex justify-center space-x-6 md:space-x-8 mb-6">
+                <a href="#forts" class="text-gray-600 hover:text-accent-saffron transition-colors">Key Forts</a>
+                <a href="#styles" class="text-gray-600 hover:text-accent-saffron transition-colors">Maratha Style</a>
+                <a href="#monuments" class="text-gray-600 hover:text-accent-saffron transition-colors">Monuments</a>
+                <a href="#visit" class="text-gray-600 hover:text-accent-saffron transition-colors">When to Visit</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>Interactive Report based on "A Scholarly Report on the Forts, Palaces, and Monuments of India".</p>
+                <p>&copy; 2024 Architectural Heritage Infographics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chartTooltipPlugin = {
+            tooltip: {
+                titleFont: { size: 16 },
+                bodyFont: { size: 14 },
+                padding: 12,
+                boxPadding: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const chartLegendPlugin = {
+            legend: {
+                labels: { color: '#374151', font: { size: 14 } }
+            }
+        };
+        
+        new Chart(document.getElementById('purposeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Function'],
+                datasets: [
+                    { label: 'Defense', data: [80], backgroundColor: '#000080' }, // Navy Blue
+                    { label: 'Civic/Residential', data: [15], backgroundColor: '#FF9933' }, // Saffron
+                    { label: 'Religious', data: [5], backgroundColor: '#138808' }   // Green
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { x: { stacked: true, ticks: { callback: value => value + '%' } }, y: { stacked: true } },
+                plugins: { ...chartTooltipPlugin, legend: { ...chartLegendPlugin.legend, position: 'bottom' } }
+            }
+        });
+
+        new Chart(document.getElementById('materialsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Basalt & Trap Rock', 'Wood', 'Laterite Stone', 'Brick & Mortar'],
+                datasets: [{
+                    data: [60, 20, 15, 5],
+                    backgroundColor: ['#000080', '#138808', '#FF9933', '#808080'], // Navy, Green, Saffron, Gray
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { ...chartTooltipPlugin, legend: chartLegendPlugin.legend }
+            }
+        });
+    </script>
+</body>
+</html>
